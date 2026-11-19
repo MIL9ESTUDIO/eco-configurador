@@ -529,11 +529,11 @@
   .bigInf{font-size:44px; line-height:.5; font-family:Arial,sans-serif; display:inline-block; vertical-align:middle; font-weight:400;}
   .preview-caption .bigInf,.summary-line .bigInf{font-size:30px;}
   /* modo embebido (?embed): solo título + configurador; el iframe hace su propio scroll */
-  html.embed .sitenav,html.embed header.hero,html.embed .quote,html.embed section.block,html.embed footer{display:none !important;}
-  html.embed .hero-title{border-top:0; padding-top:28px !important;}
+  /* en la tienda se ve la historia completa; solo se ocultan la barra y el pie propios (la tienda ya tiene los suyos) */
+  html.embed .sitenav,html.embed footer{display:none !important;}
   html.embed{scroll-padding-top:0;}
+  html.embed .hero{min-height:0;}
   .embed-only{display:none !important;}
-  html.embed .embed-only{display:inline-flex !important; margin-top:14px;}
   html.embed .preview{top:0 !important; min-height:100vh !important;}
   html.embed #miniChair{top:10px !important;}
   #miniChair{display:none;}
