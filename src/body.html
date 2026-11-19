@@ -195,8 +195,8 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
         <p><strong>Producto personalizado.</strong> Como se fabrica según tus especificaciones, no corresponde el derecho de revocación (art. 1116 del Código Civil y Comercial). Esto no afecta la garantía legal de la Ley 24.240 de Defensa del Consumidor.</p>
         <p><strong>Materiales.</strong> La madera, el terrazzo y los tapizados son materiales con variaciones naturales de veta, color y textura entre piezas; eso no es un defecto. Los plazos de producción son estimados.</p>
         <p><strong>Edición limitada.</strong> El cupo de 20 unidades numeradas está sujeto a disponibilidad y se confirma al aceptar tu pedido.</p>
-        <div id="bases-garantia" class="bases">
-          <p><strong>Garantía de por vida: bases y condiciones.</strong></p>
+        <details id="bases-garantia" class="bases">
+          <summary><strong>Garantía de por vida: bases y condiciones</strong></summary>
           <ol>
             <li><strong>Qué cubre.</strong> MilDesing SAS ofrece, de por vida, la mano de obra sin cargo para reparar cada Eco y para hacerle cambios de estética. La garantía cubre <strong>únicamente la mano de obra</strong>.</li>
             <li><strong>Qué no cubre.</strong> No incluye materiales, repuestos ni piezas nuevas, ni envíos, fletes, embalajes o traslados, de ida ni de vuelta. Todo eso corre por cuenta del titular.</li>
@@ -211,7 +211,7 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
             <li><strong>Cómo pedirla.</strong> Escribinos por WhatsApp con el número de tu silla y fotos. La evaluamos y te respondemos por escrito con la propuesta y el presupuesto de materiales.</li>
             <li><strong>Vigencia de estas bases.</strong> Si estas condiciones cambian, para cada silla rigen las vigentes al momento de su compra.</li>
           </ol>
-        </div>
+        </details>
         <p><strong>Marcas y propiedad intelectual.</strong> Eco es un producto registrado de MilDesing SAS. Blangino®, Instone®, Felpa® y los demás nombres de marcas, materiales y colores pertenecen a sus titulares y se mencionan solo para identificar los materiales. El diseño, las imágenes y el configurador pertenecen a MilDesing SAS; se prohíbe su reproducción sin autorización.</p>
         <p><strong>Datos personales.</strong> Los datos que compartas por WhatsApp se usan solo para gestionar tu pedido (Ley 25.326). Podés pedir acceso, rectificación o supresión escribiéndonos.</p>
       </div>
@@ -307,6 +307,12 @@ function syncNavOffset(){
   document.documentElement.style.scrollPaddingTop = (h + 8) + "px";
 }
 syncNavOffset(); addEventListener("resize", syncNavOffset);
+// Los links "Ver bases y condiciones" abren el desplegable de la garantía antes de saltar a él
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href="#bases-garantia"]'); if (!a) return;
+  const d = document.getElementById("bases-garantia"); if (d) d.open = true;
+});
+if (location.hash === "#bases-garantia"){ const d = document.getElementById("bases-garantia"); if (d) d.open = true; }
 // Atajo activo: se marca la sección que se está viendo y, en el teléfono, se desliza el atajo a la vista
 (function(){
   if (!navEl || !("IntersectionObserver" in window)) return;

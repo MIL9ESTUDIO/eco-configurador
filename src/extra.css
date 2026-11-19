@@ -147,7 +147,12 @@
   .warranty li{border-top:1px solid rgba(35,34,38,.18); padding-top:14px;}
   .warranty strong{display:block; font-size:19px; font-weight:600; color:var(--title); margin-bottom:6px;}
   .warranty span{font-size:15px; line-height:1.55; color:var(--ink-soft);}
-  .bases ol{margin:6px 0 0; padding-left:18px;}
+  .bases{border-top:1px solid rgba(35,34,38,.14); border-bottom:1px solid rgba(35,34,38,.14); margin:10px 0;}
+  .bases summary{cursor:pointer; list-style:none; position:relative; padding:12px 28px 12px 0;}
+  .bases summary::-webkit-details-marker{display:none;}
+  .bases summary::after{content:"+"; position:absolute; right:2px; top:8px; font-size:20px; font-weight:300; transition:transform .2s ease;}
+  .bases[open] summary::after{transform:rotate(45deg);}
+  .bases ol{margin:2px 0 12px; padding-left:18px;}
   .bases li{margin-bottom:8px;}
   #bases-garantia{scroll-margin-top:80px;}
   @media (max-width:860px){.warranty{grid-template-columns:1fr 1fr; gap:18px 16px;}}
