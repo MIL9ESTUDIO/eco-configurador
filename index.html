@@ -959,6 +959,8 @@ const EPOXY_NAMES = ["Blanco", "Negro", "Gris Piedra", "Amarillo", "Naranja", "R
 const EPOXY_EXTRA = [["Terracota", "#a5544a"]];
 const EPOXY_BIFINISH = ["Blanco", "Negro"];
 const EPOXY = LAQUEADA.filter(c => EPOXY_NAMES.includes(c[0])).concat(EPOXY_EXTRA);
+// Cuero: precio 30% sobre la pana bouclé; colores referenciales a confirmar
+const CUEROS = [["Natural","#d9c3a0"],["Suela","#b06f3c"],["Marrón","#5a3a28"],["Negro","#2a2624"],["Blanco","#f2ece0"]];
 const FELPAS = [
   {n:"Sunset", f:"sunset"}, {n:"Sunset II", f:"sunset-ii"}, {n:"La Musique", f:"la-musique"}, {n:"Ser B&N", f:"ser-byn"}
 ];
@@ -987,7 +989,7 @@ const ESF_OPTS = {
     {n:"Pintura laqueada", p:30000, bg:BG_LAQ, paint:"laqueada"}
   ],
   Terrazzo: [
-    ...TERRAZZOS.map(([n, f]) => ({n, p:60000, bg:"#e9e7e2", thumb:"thumb-tz-" + f, img:"esfera-tz-" + f}))
+    ...TERRAZZOS.map(([n, f]) => ({n, p:72000, bg:"#e9e7e2", thumb:"thumb-tz-" + f, img:"esfera-tz-" + f}))   // 20% sobre roble
   ],
   Metal: [
     {n:"Crudo", p:160000, bg:BG_CRUDO, img:"esfera-metal-crudo"},
@@ -1001,12 +1003,13 @@ const ASI_OPTS = {
     {n:"Guatambú", p:180000, bg:BG_GUAT, img:"asiento-madera-guatambu"}
   ],
   Terrazzo: [
-    ...TERRAZZOS.map(([n, f]) => ({n, p:210000, bg:"#e9e7e2", thumb:"thumb-tz-" + f, img:"asiento-tz-" + f}))
+    ...TERRAZZOS.map(([n, f]) => ({n, p:252000, bg:"#e9e7e2", thumb:"thumb-tz-" + f, img:"asiento-tz-" + f}))   // 20% sobre roble
   ],
   Tapizado: [
     {n:"Felpa", p:90000, bg:"#8a7863", sub:"felpa"},
     {n:"Pana", p:80000, bg:"repeating-linear-gradient(90deg,#efece6,#efece6 2px,#e2ded6 2px,#e2ded6 4px)", sub:"color"},
-    {n:"Pana bouclé", p:80000, bg:"radial-gradient(circle at 30% 30%,#fbf9f4 0 3px,transparent 4px) 0 0/9px 9px,radial-gradient(circle at 70% 65%,#e9e4d9 0 3px,transparent 4px) 0 0/9px 9px,#f3efe6", sub:"color"}
+    {n:"Pana bouclé", p:80000, bg:"radial-gradient(circle at 30% 30%,#fbf9f4 0 3px,transparent 4px) 0 0/9px 9px,radial-gradient(circle at 70% 65%,#e9e4d9 0 3px,transparent 4px) 0 0/9px 9px,#f3efe6", sub:"color"},
+    {n:"Cuero", p:104000, bg:"linear-gradient(135deg,#c48a55,#7a4a2c)", sub:"cuero"}
   ]
 };
 // Asiento de metal: va soldado a la estructura, mismo acabado. Precio según el acabado de la estructura.
@@ -1039,7 +1042,8 @@ function normalize(){
   const s = esfOpt(); if (s && s.paint && !state.esf.color) state.esf.color = "Blanco";
   if (e.paint === "epoxy" && !colorByName(EPOXY, state.est.color)) state.est.color = "Blanco";
   if (s && s.paint === "epoxy" && !colorByName(EPOXY, state.esf.color)) state.esf.color = "Blanco";
-  if (state.asi.fam === "Tapizado" && (state.asi.opt === "Pana" || state.asi.opt === "Pana bouclé") && !state.asi.color) state.asi.color = "Blanco";
+  if (state.asi.fam === "Tapizado" && (state.asi.opt === "Pana" || state.asi.opt === "Pana bouclé") && (!state.asi.color || colorByName(CUEROS, state.asi.color) && !colorByName(LAQUEADA.concat(ESPECIALES), state.asi.color))) state.asi.color = "Blanco";
+  if (state.asi.fam === "Tapizado" && state.asi.opt === "Cuero" && !colorByName(CUEROS, state.asi.color)) state.asi.color = "Suela";
   // Epoxy: solo blanco y negro existen en mate y brillante; los demás colores son satinados.
   [["est", estOpt()], ["esf", esfOpt()]].forEach(([k, o]) => {
     if (!o || !o.paint) return;
@@ -1158,6 +1162,7 @@ function asiLayer(){
   const o = asiOpt();
   if (o.img) return [o.img, null];
   if (o.n === "Felpa") return ["asiento-tapizado-felpa-" + FELPAS.find(f => f.n === state.asi.felpa).f, null];
+  if (o.n === "Cuero") return ["asiento-tapizado-cuero", hexOf(CUEROS, state.asi.color)];   // cuero liso teñido
   return [o.n === "Pana bouclé" ? "asiento-tapizado-pana-boucle" : "asiento-tapizado-pana", hexOf(allColors(), state.asi.color)];  // pana teñida
 }
 let drawToken = 0, mixShown = false;
@@ -1354,6 +1359,13 @@ function buildAsiento(){
     const r = row();
     FELPAS.forEach(f => r.appendChild(swatchCell(null, f.n, state.asi.felpa === f.n, () => { state.asi.felpa = f.n; }, {thumb: IMG("thumb-felpa-" + f.f)})));
     p.appendChild(r); body.appendChild(p);
+  } else if (o.sub === "cuero"){
+    const p = subPanel(); p.appendChild(label("Color del cuero"));
+    const r = row();
+    CUEROS.forEach(c => r.appendChild(swatchCell(c[1], c[0], state.asi.color === c[0], () => { state.asi.color = c[0]; })));
+    p.appendChild(r);
+    p.appendChild(note("Color referencial: se confirma por WhatsApp antes de producir."));
+    body.appendChild(p);
   } else if (o.sub === "color"){
     const p = subPanel(); p.appendChild(label("Color de la tela"));
     const r = row();
@@ -1690,6 +1702,7 @@ function cleanShared(o){
     const ao = ASI_OPTS[a.fam].find(x => x.n === str(a.opt)); if (!ao) return null;
     asi.fam = a.fam; asi.opt = ao.n;
     if (ao.sub === "color"){ asi.color = inList(a.color, LAQUEADA.concat(ESPECIALES).map(c => c[0])); if (!asi.color) return null; }
+    if (ao.sub === "cuero"){ asi.color = inList(a.color, CUEROS.map(c => c[0])); if (!asi.color) return null; }
   }
   const k = inList(o.k, ["mix", "ello", "superyo"]);
   return k ? {e: est, f: esf, a: asi, k} : {e: est, f: esf, a: asi};
