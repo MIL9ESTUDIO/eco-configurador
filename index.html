@@ -686,7 +686,7 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
   <figure class="inv-banner"><img src="fotos/invitacion-caraffa-h-1600.webp" srcset="fotos/invitacion-caraffa-h-800.webp 800w, fotos/invitacion-caraffa-h-1600.webp 1600w" sizes="(max-width:860px) 100vw, 1100px" width="1600" height="750" loading="lazy" alt="Invitación: mil9 presenta Eco, «Ello, Yo y SuperYo», Museo Emilio Caraffa, noviembre de 2025"></figure>
   <div class="psyche">
     <article class="psy" data-preset="Ello">
-      <img class="psy-img" src="fotos/ello-serie-600.webp" srcset="fotos/ello-serie-600.webp 600w, fotos/ello-serie-1200.webp 1200w" sizes="(max-width:860px) 100vw, 31vw" width="600" height="800" loading="lazy" alt="Ello: la Eco cruda con asiento y respaldo de felpa, frente a una escalera">
+      <img class="psy-img" src="fotos/ello-serie-600.webp" srcset="fotos/ello-serie-600.webp 600w, fotos/ello-serie-1200.webp 1200w" sizes="(max-width:860px) 100vw, 31vw" width="600" height="800" loading="lazy" alt="Ello: la Eco cruda con asiento y respaldo de pana bouclé, frente a una escalera">
       <h3>Ello</h3>
       <p>Soy ese que grita y el que gritó, el inconsciente que necesitás escuchar porque no fue escuchado antes. El caos ordenado de la naturaleza en el inicio de los inicios. El placer y deseo previo a la tiranía de la cultura. Acá estoy, podés entregarte y ponerte cómodo, nadie te va a juzgar, ni vos mismo.</p>
       <p class="psy-q">¿Quién querías ser?</p>
@@ -1086,6 +1086,7 @@ function describeEsf(){
 function describeAsi(){
   if (isMix()) return "∞";
   if (isSuper()) return "Metal dorado · brillante";
+  if (isEllo()) return "Tapizado Pana bouclé";
   if (state.asi.fam === "Metal"){
     const o = estOpt();
     return "Metal · igual a la estructura" + (o.paint ? " (" + o.n + " " + cn(state.est.color) + (state.est.color === "Arte" ? "" : ", " + state.est.finish.toLowerCase()) + ")" : " (" + o.n + ")");
@@ -1497,7 +1498,7 @@ const PRESETS = [
   {label:"Cromo y roble", desc:"Estructura cromada, esfera y asiento de roble", set:() => { state.est = {opt:"Cromado", color:null, finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Madera", opt:"Roble", felpa:"Sunset", color:null}; }},
   {label:"Color y roble", desc:"Laqueada azul con esfera y asiento de roble", set:() => { state.est = {opt:"Pintura laqueada", color:"Azul", finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Madera", opt:"Roble", felpa:"Sunset", color:null}; }},
   {label:"Cromo, Felpa y roble", desc:"Cromada, asiento Felpa Sunset y esfera de roble", set:() => { state.est = {opt:"Cromado", color:null, finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Felpa", felpa:"Sunset", color:null}; }},
-  {label:"Ello", ello:true, desc:"Todo crudo, sin esfera, asiento Felpa Sunset", set:() => { state.est = {opt:"Crudo", color:null, finish:"Mate"}; state.esf = {fam:"Metal", opt:"Crudo", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Felpa", felpa:"Sunset", color:null}; }},
+  {label:"Ello", ello:true, desc:"Todo crudo, sin esfera, asiento de pana bouclé", set:() => { state.est = {opt:"Crudo", color:null, finish:"Mate"}; state.esf = {fam:"Metal", opt:"Crudo", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Pana bouclé", felpa:"Sunset", color:"Blanco"}; }},
   {label:"Yo", desc:"Estructura naranja, esfera de roble, asiento Felpa Sunset", set:() => { state.est = {opt:"Pintura laqueada", color:"Naranja", finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Felpa", felpa:"Sunset", color:null}; }},
   {label:"Superyo", superyo:true, desc:"Full dorada, metal brillante", set:() => { state.est = {opt:"Pintura laqueada", color:"Oro Azteca", finish:"Brillante"}; state.esf = {same:true, fam:"Madera", opt:"Guatambú", color:null, finish:"Brillante"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }},
   {label:"Se me ocurre otra cosa", mix:true, set:() => { state.est = {opt:"Pintura laqueada", color:"Arte", finish:"Mate"}; state.esf = {same:true, fam:"Madera", opt:"Guatambú", color:null, finish:"Mate"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }}
