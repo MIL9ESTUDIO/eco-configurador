@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="eco-logo.svg" type="image/svg+xml">
 <title>Eco — ¿Quién soy? · mil9</title>
 <meta name="description" content="Eco, de mil9: una adivinanza hecha objeto. Se adivina asiento, perchero y escultura. Edición limitada de 20 unidades. Configurá la tuya.">
 <meta property="og:title" content="Eco — ¿Quién soy? · mil9">
@@ -968,9 +969,9 @@ const BG_CROMO = "linear-gradient(135deg,#e8eaeb,#b7bcc0)";
 const BG_TORNA = "linear-gradient(135deg,#5aa0c9,#c95a9e,#e0c95a)";
 const BG_LAQ = "conic-gradient(#af2734,#ff9800,#fedf00,#72b896,#0061a9,#9079af,#af2734)";
 const BG_EPX = "linear-gradient(135deg,#0061a9 50%,#af2734 50%)";
-const BG_TERR_ANS = "radial-gradient(circle at 28% 32%,#8a3a4a 0 2px,transparent 3px) 0 0/9px 9px,radial-gradient(circle at 72% 68%,#a9c5ab 0 2px,transparent 3px) 0 0/7px 7px,#eeeeec";
-const BG_TERR_IGU = "radial-gradient(circle at 28% 32%,#13803a 0 2.2px,transparent 3.2px) 0 0/8px 8px,radial-gradient(circle at 72% 68%,#13803a 0 1.5px,transparent 2.5px) 0 0/6px 6px,#eeeeec";
 const BG_ROBLE = "#c8a878", BG_GUAT = "#e8d9a8";
+// Línea Terrazo de Blangino (placas para pisos y revestimiento). Las capas de la silla se generan desde la foto de cada placa.
+const TERRAZZOS = [["Iguazú","iguazu"],["Chaltén","chalten"],["Iberá","ibera"],["Talampaya","talampaya"],["Ansenuza","ansenuza"],["Calamuchita","calamuchita"],["Calchaquí","calchaqui"],["Lanín","lanin"],["Aconcagua","aconcagua"]];
 
 const EST_OPTS = [
   {n:"Crudo", p:0, bg:BG_CRUDO, img:"estructura-crudo"},
@@ -986,8 +987,7 @@ const ESF_OPTS = {
     {n:"Pintura laqueada", p:30000, bg:BG_LAQ, paint:"laqueada"}
   ],
   Terrazzo: [
-    {n:"Ansenuza", p:60000, bg:BG_TERR_ANS, img:"esfera-terrazzo-ansenuza"},
-    {n:"Iguazú", p:60000, bg:BG_TERR_IGU, img:"esfera-terrazzo-iguazu"}
+    ...TERRAZZOS.map(([n, f]) => ({n, p:60000, bg:"#e9e7e2", thumb:"thumb-tz-" + f, img:"esfera-tz-" + f}))
   ],
   Metal: [
     {n:"Crudo", p:160000, bg:BG_CRUDO, img:"esfera-metal-crudo"},
@@ -1001,8 +1001,7 @@ const ASI_OPTS = {
     {n:"Guatambú", p:180000, bg:BG_GUAT, img:"asiento-madera-guatambu"}
   ],
   Terrazzo: [
-    {n:"Ansenuza", p:210000, bg:BG_TERR_ANS, img:"asiento-terrazzo-ansenuza"},
-    {n:"Iguazú", p:210000, bg:BG_TERR_IGU, img:"asiento-terrazzo-iguazu"}
+    ...TERRAZZOS.map(([n, f]) => ({n, p:210000, bg:"#e9e7e2", thumb:"thumb-tz-" + f, img:"asiento-tz-" + f}))
   ],
   Tapizado: [
     {n:"Felpa", p:90000, bg:"#8a7863", sub:"felpa"},
@@ -1307,7 +1306,7 @@ function colorRows(wrap, piece, o){
 }
 function optionRow(opts, activeName, pick){
   const r = row();
-  opts.forEach(o => r.appendChild(swatchCell(o.bg, o.n, o.n === activeName, () => pick(o))));
+  opts.forEach(o => r.appendChild(swatchCell(o.bg, o.n, o.n === activeName, () => pick(o), o.thumb ? {thumb: IMG(o.thumb)} : null)));
   return r;
 }
 function subPanel(){ const d = document.createElement("div"); d.className = "sub-swatches open"; return d; }
