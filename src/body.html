@@ -23,6 +23,7 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
     <a href="#adivinanza">La adivinanza</a>
     <a href="#ello-yo-superyo">Ello, Yo y Superyó</a>
     <a href="#en-su-lugar">En su lugar</a>
+    <a href="#quien-sos">Documental</a>
     <a href="#configurar">Configurar</a>
     <a href="#garantia">Garantía</a>
     <a href="#preguntas">Preguntas</a>
@@ -291,7 +292,35 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
 <script>
 const IMGDATA = null; /*EMBED*/
 const EMBED = document.documentElement.classList.contains("embed");
-const NAV_H = EMBED ? 0 : 64;   // alto de la barra de navegación fija (no existe en modo embebido)
+// Alto real de la barra de atajos fija (en el teléfono tiene dos filas). Se usa para anclas, mini silla y barra de precio.
+const navEl = document.querySelector(".sitenav");
+const navH = () => navEl ? Math.round(navEl.getBoundingClientRect().height) : 0;
+const NAV_H = navH();
+function syncNavOffset(){
+  const h = navH();
+  document.documentElement.style.setProperty("--nav-h", h + "px");
+  document.documentElement.style.scrollPaddingTop = (h + 8) + "px";
+}
+syncNavOffset(); addEventListener("resize", syncNavOffset);
+// Atajo activo: se marca la sección que se está viendo y, en el teléfono, se desliza el atajo a la vista
+(function(){
+  if (!navEl || !("IntersectionObserver" in window)) return;
+  const links = [...navEl.querySelectorAll(".sitenav-links a")];
+  const byId = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
+  const seen = new Map();
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => seen.set(e.target.dataset.navId || e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
+    let best = null, bestR = 0; seen.forEach((r, id) => { if (r > bestR){ bestR = r; best = id; } });
+    links.forEach(a => a.classList.toggle("on", a === byId.get(best)));
+    const on = byId.get(best), row = navEl.querySelector(".sitenav-links");
+    if (on && row.scrollWidth > row.clientWidth){
+      const x = on.offsetLeft - row.offsetLeft - 20;
+      if (x < row.scrollLeft || on.offsetLeft - row.offsetLeft + on.offsetWidth > row.scrollLeft + row.clientWidth) row.scrollTo({left: x, behavior: "smooth"});
+    }
+  }, {threshold: [0, .15, .3, .5], rootMargin: "-20% 0px -40% 0px"});
+  byId.forEach((a, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  const cfg = document.querySelector(".configurator"); if (cfg){ cfg.dataset.navId = "configurar"; io.observe(cfg); }   // el título es corto: el configurador entero cuenta como "Configurar"
+})();
 // Renders de terrazzo: se usan con el nombre de archivo original
 const IMG_ALIAS = {};
 const FILE = n => IMG_ALIAS[n] ? encodeURIComponent(IMG_ALIAS[n]) : n;
@@ -1157,7 +1186,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeConfirm
   const check = () => {
     queued = false;
     const H = innerHeight, w = wrap.getBoundingClientRect(), p = panel.getBoundingClientRect(), s = sum.getBoundingClientRect();
-    const wrapVis = w.height ? (Math.min(w.bottom, H) - Math.max(w.top, NAV_H)) / w.height : 0;
+    const wrapVis = w.height ? (Math.min(w.bottom, H) - Math.max(w.top, navH())) / w.height : 0;
     const next = matchMedia("(max-width:860px)").matches && p.top < H && p.bottom > 0 && wrapVis < 0.5 && s.top > H;
     if (next === on) return;
     on = next; bar.classList.toggle("show", on); bar.setAttribute("aria-hidden", on ? "false" : "true"); document.getElementById("mbarCta").tabIndex = on ? 0 : -1;

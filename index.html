@@ -348,6 +348,8 @@
   .sitenav-links{display:flex; gap:26px; margin-left:auto;}
   .sitenav-links a{font-size:13px; text-decoration:none; color:var(--ink-soft);}
   .sitenav-links a:hover{color:var(--ink);}
+  .sitenav-links a.on{color:var(--title); font-weight:600;}
+  @media (max-width:1100px){ .sitenav-links a.on{background:#1c1b1e; border-color:#1c1b1e; color:#fff;} }
   .sitenav-cta{padding:9px 18px; border-radius:999px; background:#1c1b1e; color:#fff; text-decoration:none; font-size:13px; font-weight:500;}
   .sitenav-cta:hover{background:var(--accent);}
 
@@ -429,7 +431,7 @@
   /* ================= configurador: visor + carrusel ================= */
   .hero-title{padding-top:72px !important; border-top:1px solid rgba(35,34,38,.1);}
   .configurator{grid-template-columns:1.35fr 1fr !important;}
-  .preview{position:sticky !important; top:58px !important; flex-direction:column; min-height:calc(100vh - 58px) !important; padding:28px 24px !important; gap:10px;}
+  .preview{position:sticky !important; top:var(--nav-h, 58px) !important; flex-direction:column; min-height:calc(100vh - var(--nav-h, 58px)) !important; padding:28px 24px !important; gap:10px;}
   .viewer{position:relative; display:flex; align-items:center; justify-content:center; width:100%;}
   .preview-imgwrap{max-width:560px !important; overflow:hidden; border-radius:12px; flex:1 1 auto;}
   .stage{position:absolute; inset:0; transform-origin:0 0; transition:transform .75s cubic-bezier(.2,.8,.2,1); will-change:transform;}
@@ -490,7 +492,13 @@
   .psub-title{font-size:30px; font-weight:600; margin:8px 0 18px; color:var(--title); letter-spacing:-.01em;}
 
   @media (max-width:1100px){
-    .sitenav-links{display:none;}
+    /* atajos en una segunda fila deslizable */
+    .sitenav{flex-wrap:wrap; row-gap:6px; padding-top:6px !important; padding-bottom:8px !important;}
+    .sitenav-brand{padding:6px 0;}
+    .sitenav-cta{padding:8px 16px;}
+    .sitenav-links{order:3; flex:0 0 calc(100% + 40px); display:flex; gap:8px; margin:0 -20px; padding:0 20px 2px; overflow-x:auto; scrollbar-width:none; scroll-padding-left:20px;}
+    .sitenav-links::-webkit-scrollbar{display:none;}
+    .sitenav-links a{flex:0 0 auto; padding:8px 13px; border-radius:999px; border:1px solid rgba(35,34,38,.18); background:rgba(255,255,255,.55); color:var(--ink); white-space:nowrap; font-size:13px;}
     .sitenav-cta{margin-left:auto;}
   }
   @media (max-width:860px){
@@ -528,14 +536,12 @@
 
   .bigInf{font-size:44px; line-height:.5; font-family:Arial,sans-serif; display:inline-block; vertical-align:middle; font-weight:400;}
   .preview-caption .bigInf,.summary-line .bigInf{font-size:30px;}
-  /* modo embebido (?embed): solo título + configurador; el iframe hace su propio scroll */
-  /* en la tienda se ve la historia completa; solo se ocultan la barra y el pie propios (la tienda ya tiene los suyos) */
-  html.embed .sitenav,html.embed footer{display:none !important;}
-  html.embed{scroll-padding-top:0;}
+  /* modo embebido (?embed, dentro de la tienda): historia completa con la barra de atajos; sin logo ni pie propios (la tienda ya los tiene) */
+  html.embed footer{display:none !important;}
+  html.embed .sitenav-brand{display:none !important;}
+  @media (min-width:1101px){ html.embed .sitenav-links{margin-left:0;} }
   html.embed .hero{min-height:0;}
   .embed-only{display:none !important;}
-  html.embed .preview{top:0 !important; min-height:100vh !important;}
-  html.embed #miniChair{top:10px !important;}
   #miniChair{display:none;}
   /* marco no autorizado: solo se ve un link al sitio */
   html.blocked body > *:not(#ecoBlocked){display:none !important;}
@@ -574,7 +580,7 @@
     #view-rec .preset-row .preset-btn,#view-rec .preset-row button{flex:1 1 auto;}
   }
   @media (max-width:860px){
-    #miniChair{display:block; position:fixed; left:10px; top:64px; width:101px; height:123px; z-index:60; opacity:0; transform:translateY(-14px) scale(.9); transition:opacity .3s ease, transform .3s ease; pointer-events:none; overflow:hidden;}
+    #miniChair{display:block; position:fixed; left:10px; top:calc(var(--nav-h, 64px) + 4px); width:101px; height:123px; z-index:60; opacity:0; transform:translateY(-14px) scale(.9); transition:opacity .3s ease, transform .3s ease; pointer-events:none; overflow:hidden;}
     #miniChair.show{opacity:1; transform:none;}
     #miniChair canvas{width:100%; height:100%; display:block; filter:drop-shadow(0 3px 8px rgba(0,0,0,.28));}
   }
@@ -608,6 +614,7 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
     <a href="#adivinanza">La adivinanza</a>
     <a href="#ello-yo-superyo">Ello, Yo y Superyó</a>
     <a href="#en-su-lugar">En su lugar</a>
+    <a href="#quien-sos">Documental</a>
     <a href="#configurar">Configurar</a>
     <a href="#garantia">Garantía</a>
     <a href="#preguntas">Preguntas</a>
@@ -876,7 +883,35 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
 <script>
 const IMGDATA = null; /*EMBED*/
 const EMBED = document.documentElement.classList.contains("embed");
-const NAV_H = EMBED ? 0 : 64;   // alto de la barra de navegación fija (no existe en modo embebido)
+// Alto real de la barra de atajos fija (en el teléfono tiene dos filas). Se usa para anclas, mini silla y barra de precio.
+const navEl = document.querySelector(".sitenav");
+const navH = () => navEl ? Math.round(navEl.getBoundingClientRect().height) : 0;
+const NAV_H = navH();
+function syncNavOffset(){
+  const h = navH();
+  document.documentElement.style.setProperty("--nav-h", h + "px");
+  document.documentElement.style.scrollPaddingTop = (h + 8) + "px";
+}
+syncNavOffset(); addEventListener("resize", syncNavOffset);
+// Atajo activo: se marca la sección que se está viendo y, en el teléfono, se desliza el atajo a la vista
+(function(){
+  if (!navEl || !("IntersectionObserver" in window)) return;
+  const links = [...navEl.querySelectorAll(".sitenav-links a")];
+  const byId = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
+  const seen = new Map();
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => seen.set(e.target.dataset.navId || e.target.id, e.isIntersecting ? e.intersectionRatio : 0));
+    let best = null, bestR = 0; seen.forEach((r, id) => { if (r > bestR){ bestR = r; best = id; } });
+    links.forEach(a => a.classList.toggle("on", a === byId.get(best)));
+    const on = byId.get(best), row = navEl.querySelector(".sitenav-links");
+    if (on && row.scrollWidth > row.clientWidth){
+      const x = on.offsetLeft - row.offsetLeft - 20;
+      if (x < row.scrollLeft || on.offsetLeft - row.offsetLeft + on.offsetWidth > row.scrollLeft + row.clientWidth) row.scrollTo({left: x, behavior: "smooth"});
+    }
+  }, {threshold: [0, .15, .3, .5], rootMargin: "-20% 0px -40% 0px"});
+  byId.forEach((a, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  const cfg = document.querySelector(".configurator"); if (cfg){ cfg.dataset.navId = "configurar"; io.observe(cfg); }   // el título es corto: el configurador entero cuenta como "Configurar"
+})();
 // Renders de terrazzo: se usan con el nombre de archivo original
 const IMG_ALIAS = {};
 const FILE = n => IMG_ALIAS[n] ? encodeURIComponent(IMG_ALIAS[n]) : n;
@@ -1742,7 +1777,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeConfirm
   const check = () => {
     queued = false;
     const H = innerHeight, w = wrap.getBoundingClientRect(), p = panel.getBoundingClientRect(), s = sum.getBoundingClientRect();
-    const wrapVis = w.height ? (Math.min(w.bottom, H) - Math.max(w.top, NAV_H)) / w.height : 0;
+    const wrapVis = w.height ? (Math.min(w.bottom, H) - Math.max(w.top, navH())) / w.height : 0;
     const next = matchMedia("(max-width:860px)").matches && p.top < H && p.bottom > 0 && wrapVis < 0.5 && s.top > H;
     if (next === on) return;
     on = next; bar.classList.toggle("show", on); bar.setAttribute("aria-hidden", on ? "false" : "true"); document.getElementById("mbarCta").tabIndex = on ? 0 : -1;

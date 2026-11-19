@@ -84,6 +84,8 @@
   .sitenav-links{display:flex; gap:26px; margin-left:auto;}
   .sitenav-links a{font-size:13px; text-decoration:none; color:var(--ink-soft);}
   .sitenav-links a:hover{color:var(--ink);}
+  .sitenav-links a.on{color:var(--title); font-weight:600;}
+  @media (max-width:1100px){ .sitenav-links a.on{background:#1c1b1e; border-color:#1c1b1e; color:#fff;} }
   .sitenav-cta{padding:9px 18px; border-radius:999px; background:#1c1b1e; color:#fff; text-decoration:none; font-size:13px; font-weight:500;}
   .sitenav-cta:hover{background:var(--accent);}
 
@@ -165,7 +167,7 @@
   /* ================= configurador: visor + carrusel ================= */
   .hero-title{padding-top:72px !important; border-top:1px solid rgba(35,34,38,.1);}
   .configurator{grid-template-columns:1.35fr 1fr !important;}
-  .preview{position:sticky !important; top:58px !important; flex-direction:column; min-height:calc(100vh - 58px) !important; padding:28px 24px !important; gap:10px;}
+  .preview{position:sticky !important; top:var(--nav-h, 58px) !important; flex-direction:column; min-height:calc(100vh - var(--nav-h, 58px)) !important; padding:28px 24px !important; gap:10px;}
   .viewer{position:relative; display:flex; align-items:center; justify-content:center; width:100%;}
   .preview-imgwrap{max-width:560px !important; overflow:hidden; border-radius:12px; flex:1 1 auto;}
   .stage{position:absolute; inset:0; transform-origin:0 0; transition:transform .75s cubic-bezier(.2,.8,.2,1); will-change:transform;}
@@ -226,7 +228,13 @@
   .psub-title{font-size:30px; font-weight:600; margin:8px 0 18px; color:var(--title); letter-spacing:-.01em;}
 
   @media (max-width:1100px){
-    .sitenav-links{display:none;}
+    /* atajos en una segunda fila deslizable */
+    .sitenav{flex-wrap:wrap; row-gap:6px; padding-top:6px !important; padding-bottom:8px !important;}
+    .sitenav-brand{padding:6px 0;}
+    .sitenav-cta{padding:8px 16px;}
+    .sitenav-links{order:3; flex:0 0 calc(100% + 40px); display:flex; gap:8px; margin:0 -20px; padding:0 20px 2px; overflow-x:auto; scrollbar-width:none; scroll-padding-left:20px;}
+    .sitenav-links::-webkit-scrollbar{display:none;}
+    .sitenav-links a{flex:0 0 auto; padding:8px 13px; border-radius:999px; border:1px solid rgba(35,34,38,.18); background:rgba(255,255,255,.55); color:var(--ink); white-space:nowrap; font-size:13px;}
     .sitenav-cta{margin-left:auto;}
   }
   @media (max-width:860px){
@@ -264,14 +272,12 @@
 
   .bigInf{font-size:44px; line-height:.5; font-family:Arial,sans-serif; display:inline-block; vertical-align:middle; font-weight:400;}
   .preview-caption .bigInf,.summary-line .bigInf{font-size:30px;}
-  /* modo embebido (?embed): solo título + configurador; el iframe hace su propio scroll */
-  /* en la tienda se ve la historia completa; solo se ocultan la barra y el pie propios (la tienda ya tiene los suyos) */
-  html.embed .sitenav,html.embed footer{display:none !important;}
-  html.embed{scroll-padding-top:0;}
+  /* modo embebido (?embed, dentro de la tienda): historia completa con la barra de atajos; sin logo ni pie propios (la tienda ya los tiene) */
+  html.embed footer{display:none !important;}
+  html.embed .sitenav-brand{display:none !important;}
+  @media (min-width:1101px){ html.embed .sitenav-links{margin-left:0;} }
   html.embed .hero{min-height:0;}
   .embed-only{display:none !important;}
-  html.embed .preview{top:0 !important; min-height:100vh !important;}
-  html.embed #miniChair{top:10px !important;}
   #miniChair{display:none;}
   /* marco no autorizado: solo se ve un link al sitio */
   html.blocked body > *:not(#ecoBlocked){display:none !important;}
@@ -310,7 +316,7 @@
     #view-rec .preset-row .preset-btn,#view-rec .preset-row button{flex:1 1 auto;}
   }
   @media (max-width:860px){
-    #miniChair{display:block; position:fixed; left:10px; top:64px; width:101px; height:123px; z-index:60; opacity:0; transform:translateY(-14px) scale(.9); transition:opacity .3s ease, transform .3s ease; pointer-events:none; overflow:hidden;}
+    #miniChair{display:block; position:fixed; left:10px; top:calc(var(--nav-h, 64px) + 4px); width:101px; height:123px; z-index:60; opacity:0; transform:translateY(-14px) scale(.9); transition:opacity .3s ease, transform .3s ease; pointer-events:none; overflow:hidden;}
     #miniChair.show{opacity:1; transform:none;}
     #miniChair canvas{width:100%; height:100%; display:block; filter:drop-shadow(0 3px 8px rgba(0,0,0,.28));}
   }
