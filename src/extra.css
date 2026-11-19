@@ -170,7 +170,15 @@
   .gallery:focus-visible{outline:2px solid var(--accent); outline-offset:4px;}
 
   /* ================= configurador: visor + carrusel ================= */
-  .hero-title{padding-top:72px !important; border-top:1px solid rgba(35,34,38,.1);}
+  /* título del configurador compacto: "Armá la tuya" salta directo al configurador y la silla queda a la vista */
+  .hero-title{padding-top:40px !important; padding-bottom:18px !important; border-top:1px solid rgba(35,34,38,.1);}
+  .hero-title h1{font-size:28px !important; margin-bottom:6px !important;}
+  .hero-title p{font-size:14px !important;}
+  @media (max-width:860px){
+    .hero-title{padding-top:30px !important; padding-bottom:12px !important;}
+    .hero-title h1{font-size:23px !important;}
+    .hero-title p{font-size:13.5px !important;}
+  }
   .configurator{grid-template-columns:1.35fr 1fr !important;}
   .preview{position:sticky !important; top:var(--nav-h, 58px) !important; flex-direction:column; min-height:calc(100vh - var(--nav-h, 58px)) !important; padding:28px 24px !important; gap:10px;}
   .viewer{position:relative; display:flex; align-items:center; justify-content:center; width:100%;}
