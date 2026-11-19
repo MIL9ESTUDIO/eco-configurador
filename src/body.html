@@ -1,0 +1,1170 @@
+
+<script>
+/* Modo embebido (?embed): solo el configurador, para meterlo en un iframe de la tienda */
+if (new URLSearchParams(location.search).has("embed")) document.documentElement.classList.add("embed");
+/* Solo la tienda de mil9 puede mostrar esta página dentro de un marco. En cualquier otro sitio se reemplaza por un link (evita que la usen para engañar a alguien). */
+(function(){
+  if (window.top === window.self) return;
+  var ok = /^https:\/\/([a-z0-9-]+\.)*(milnuevestudio\.com|mitiendanube\.com|tiendanube\.com)$|^http:\/\/localhost(:\d+)?$/;
+  var parent = "";
+  try { parent = (location.ancestorOrigins && location.ancestorOrigins.length) ? location.ancestorOrigins[0] : (document.referrer ? new URL(document.referrer).origin : ""); } catch (e) {}
+  if (!parent || ok.test(parent)) return;   // sin dato del sitio de afuera no se bloquea, para no romper la tienda
+  document.documentElement.classList.add("blocked");
+  document.addEventListener("DOMContentLoaded", function(){
+    var a = document.createElement("a"); a.id = "ecoBlocked"; a.href = "https://eco.milnuevestudio.com/"; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = "Abrir el configurador de la Silla Eco"; document.body.appendChild(a);
+  });
+})();
+</script>
+
+<nav class="sitenav" aria-label="Secciones">
+  <a class="sitenav-brand" href="#top" aria-label="mil9 · Eco">mil9 <span>·</span> <svg class="eco-logo" aria-hidden="true"><use href="#ecoLogo"/></svg></a>
+  <div class="sitenav-links">
+    <a href="#adivinanza">La adivinanza</a>
+    <a href="#ello-yo-superyo">Ello, Yo y Superyó</a>
+    <a href="#en-su-lugar">En su lugar</a>
+    <a href="#configurar">Configurar</a>
+    <a href="#garantia">Garantía</a>
+    <a href="#preguntas">Preguntas</a>
+    <a href="#mil9">mil9</a>
+  </div>
+  <a class="sitenav-cta" href="#configurar">Armá la tuya</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-text">
+    <div class="kicker">mil9 · Edición limitada de 20 unidades</div>
+    <h1 class="eco-h1"><svg class="eco-logo" role="img" aria-label="Eco"><use href="#ecoLogo"/></svg></h1>
+    <p class="hero-lead">Una adivinanza hecha objeto: se adivina asiento, perchero y escultura. Es eso, es más, es lo que quieras que sea.</p>
+    <div class="hero-actions">
+      <a class="pill-btn solid" href="#configurar">Armá la tuya</a>
+      <a class="pill-btn" href="#adivinanza">¿Quién soy?</a>
+    </div>
+  </div>
+  <figure class="hero-photo"><img src="fotos/hero-caraffa-1600.webp" srcset="fotos/hero-caraffa-800.webp 800w, fotos/hero-caraffa-1600.webp 1600w" sizes="(max-width:860px) 100vw, 60vw" width="1600" height="1067" alt="Las tres Eco intervenidas como Ello, Yo y Superyó en la muestra del Museo Caraffa" fetchpriority="high"></figure>
+</header>
+
+<section class="quote">
+  <blockquote>«Omitir la palabra silla es quizás el modo más enfático de nombrarla».</blockquote>
+  <cite>mil9</cite>
+</section>
+
+<section class="block" id="adivinanza">
+  <h2>¿Quién soy! Una adivinanza</h2>
+  <div class="prose">
+    <p>Eco es una adivinanza que atravesamos como personas, como estudio, como diseñadores y como empresa. Una pregunta constante que se materializa en objeto: se adivina asiento, perchero y escultura. Es eso, es más, es lo que quieras que sea.</p>
+    <p>Genera la pregunta esencial: ¿Quién soy? Expone la identidad a través de aquello que elegís vestir. ¿Qué te vas a poner hoy? ¿Cómo lo vas a llevar? En esta era de aturdimiento, Eco no viene a cuestionar, sino a exhibir lo que realmente sos.</p>
+    <details class="more">
+      <summary>Leer el texto completo</summary>
+      <p>Fuera de los vestidores cerrados, esas prendas que contiene son las que vas a llevar hoy, porque todas las cosas te suceden precisamente ahora. ¿Y quién sos ahora? Es una pregunta difícil. En el mejor de los escenarios, recibís el eco y encontrás respuesta al ver tu conjunto expuesto.</p>
+      <p>La vestimenta es la interfaz del individuo con el mundo: piel sintética, construcción de identidad, frontera del deseo y canal de comunicación del yo, unas veces exhibido, otras disimulado. Del mismo modo, el producto se afirma como pieza única: un acento en el entorno, una memoria del diseño y de las formas en espacios que reclaman intervención. Se vuelve tema de conversación.</p>
+      <p>En tiempos de modelización del ser donde todo es proyecto y objetivo futuro, y el presente parece diluirse, Eco aparece como un objeto personalizable e intencionalmente incompleto. Una crítica desde adentro que acentúa esa incompletud para abrazarla. No es un adorno estático, exige ser llenado, reclama intervención, es un proyecto.</p>
+      <p>Personal, profesional pero sobre todo temporalmente, esta pregunta nos define. Nos impulsa a renacer y a repensar quiénes somos.</p>
+      <p>Como dijo el doctor Stephen Albert dialogando con su verdugo: “En una adivinanza cuyo tema es el ajedrez, ¿cuál es la única palabra prohibida?” “¡El ajedrez!”, respondió Yu Tsun. Así es. Omitir la palabra silla es quizás el modo más enfático de nombrarla.</p>
+    </details>
+  </div>
+</section>
+
+<section class="block" id="uso">
+  <h2>La ropa de medio uso</h2>
+  <div class="prose"><p>Eco es una silla pensada como soporte para la ropa que usamos todos los días, esa que queda a medio camino entre volver a ponerse o lavar. La forma sigue a su función, logrando ser silla y escultura al mismo tiempo. Ya sea en una habitación o incluso en un living.</p></div>
+  <div class="uses">
+    <figure class="use"><img src="fotos/uso-respaldo-600.webp" srcset="fotos/uso-respaldo-600.webp 600w, fotos/uso-respaldo-1200.webp 1200w" sizes="(max-width:860px) 80vw, 31vw" width="600" height="900" loading="lazy" alt="Saco y camisa colgados del respaldo de la Eco"><figcaption><strong>Respaldo de doble curva</strong>Permite apoyar una chaqueta o camisa en la parte superior y un pantalón en la inferior.</figcaption></figure>
+    <figure class="use"><img src="fotos/uso-esfera-600.webp" srcset="fotos/uso-esfera-600.webp 600w, fotos/uso-esfera-1200.webp 1200w" sizes="(max-width:860px) 80vw, 31vw" width="600" height="900" loading="lazy" alt="Una cartera colgada de la esfera de la Eco"><figcaption><strong>Brazo telescópico</strong>Se despliega para colgar prendas más largas, como un vestido, un tapado o una bufanda.</figcaption></figure>
+    <figure class="use"><img src="fotos/uso-aro-600.webp" srcset="fotos/uso-aro-600.webp 600w, fotos/uso-aro-1200.webp 1200w" sizes="(max-width:860px) 80vw, 31vw" width="600" height="900" loading="lazy" alt="Mocasines apoyados en el soporte inferior de la Eco"><figcaption><strong>Soporte inferior</strong>Sostiene los zapatos aprovechando el encastre dado por la gravedad.</figcaption></figure>
+  </div>
+</section>
+
+<section class="block" id="ello-yo-superyo">
+  <h2>Ello, Yo y Superyó</h2>
+  <div class="prose"><p>Para la muestra en el Museo Caraffa intervinimos tres sillas de acuerdo a partes de la psique humana según Sigmund Freud. Tres sillas para interpelar y hacer que el público se pregunte realmente quién es. Una pregunta que, por difícil, a veces esquivamos.</p></div>
+  <figure class="inv-banner"><img src="fotos/invitacion-caraffa-h-1600.webp" srcset="fotos/invitacion-caraffa-h-800.webp 800w, fotos/invitacion-caraffa-h-1600.webp 1600w" sizes="(max-width:860px) 100vw, 1100px" width="1600" height="750" loading="lazy" alt="Invitación: mil9 presenta Eco, «Ello, Yo y SuperYo», Museo Emilio Caraffa, noviembre de 2025"></figure>
+  <div class="psyche">
+    <article class="psy" data-preset="Ello">
+      <img class="psy-img" src="fotos/ello-serie-600.webp" srcset="fotos/ello-serie-600.webp 600w, fotos/ello-serie-1200.webp 1200w" sizes="(max-width:860px) 100vw, 31vw" width="600" height="800" loading="lazy" alt="Ello: la Eco cruda con asiento y respaldo de felpa, frente a una escalera">
+      <h3>Ello</h3>
+      <p>Soy ese que grita y el que gritó, el inconsciente que necesitás escuchar porque no fue escuchado antes. El caos ordenado de la naturaleza en el inicio de los inicios. El placer y deseo previo a la tiranía de la cultura. Acá estoy, podés entregarte y ponerte cómodo, nadie te va a juzgar, ni vos mismo.</p>
+      <p class="psy-q">¿Quién querías ser?</p>
+      <button class="pill-btn" type="button">Empezar desde Ello</button>
+    </article>
+    <article class="psy" data-preset="Yo">
+      <img class="psy-img" src="fotos/yo-serie-600.webp" srcset="fotos/yo-serie-600.webp 600w, fotos/yo-serie-1200.webp 1200w" sizes="(max-width:860px) 100vw, 31vw" width="600" height="800" loading="lazy" alt="Yo: la Eco naranja con esfera de roble y asiento estampado, frente a una escalera">
+      <h3>Yo</h3>
+      <p>Soy la suma, soy todos, soy tu representante, el que mostrás. Renunciaste a tu identidad para formarte, para que nos acomodemos a esta realidad de espera y exigencia. Lo que te salió en ese y este momento.</p>
+      <p class="psy-q">¿Quién sos?</p>
+      <button class="pill-btn" type="button">Empezar desde Yo</button>
+    </article>
+    <article class="psy" data-preset="Superyo">
+      <img class="psy-img" src="fotos/superyo-serie-600.webp" srcset="fotos/superyo-serie-600.webp 600w, fotos/superyo-serie-1200.webp 1200w" sizes="(max-width:860px) 100vw, 31vw" width="600" height="800" loading="lazy" alt="Superyó: la Eco dorada de punta a punta, frente a una escalera">
+      <h3>Superyó</h3>
+      <p>Soy el que crees que debés ser, soy la advertencia y prohibición, el control y la parálisis. El que juzga y reprime, la perfección incontrolablemente anhelada pero inalcanzable, la envidia que nos trajo hasta acá, la que nos hizo tropezar y fue motor, pánico y sofocación.</p>
+      <p class="psy-q">¿Quién querían que seas?</p>
+      <button class="pill-btn" type="button">Empezar desde Superyó</button>
+    </article>
+  </div>
+  <p class="psy-coda">Soy esa que te envuelve y te abriga, la que te resulta cómoda, la que te distingue o te iguala a los demás, puedo ser también esa que oprime y no te deja mover.</p>
+</section>
+
+<section class="block" id="en-su-lugar">
+  <h2>En su lugar</h2>
+  <div class="prose"><p>En una habitación, en un living, en el taller o en la cancha: la Eco toma lo que llevás puesto.</p></div>
+  <div class="gallery" tabindex="0" aria-label="Fotos de la Eco en distintos lugares">
+    <figure><img src="fotos/lugar-cancha-600.webp" srcset="fotos/lugar-cancha-600.webp 600w, fotos/lugar-cancha-1200.webp 1200w" sizes="(max-width:860px) 78vw, 30vw" width="600" height="900" loading="lazy" alt="Eco naranja con ropa de tenis en una cancha de polvo de ladrillo"><figcaption>La cancha</figcaption></figure>
+    <figure><img src="fotos/lugar-taller-600.webp" srcset="fotos/lugar-taller-600.webp 600w, fotos/lugar-taller-1200.webp 1200w" sizes="(max-width:860px) 78vw, 30vw" width="600" height="900" loading="lazy" alt="Eco cromada con guantes y auriculares en el taller"><figcaption>El taller</figcaption></figure>
+    <figure><img src="fotos/lugar-depto-600.webp" srcset="fotos/lugar-depto-600.webp 600w, fotos/lugar-depto-1200.webp 1200w" sizes="(max-width:860px) 78vw, 30vw" width="600" height="900" loading="lazy" alt="Eco naranja con una campera roja en un living"><figcaption>El living</figcaption></figure>
+    <figure><img src="fotos/lugar-biblioteca-600.webp" srcset="fotos/lugar-biblioteca-600.webp 600w, fotos/lugar-biblioteca-1200.webp 1200w" sizes="(max-width:860px) 78vw, 30vw" width="600" height="900" loading="lazy" alt="Asiento de roble de la Eco con un pañuelo y mocasines"><figcaption>La biblioteca</figcaption></figure>
+    <figure><img src="fotos/lugar-raqueta-600.webp" srcset="fotos/lugar-raqueta-600.webp 600w, fotos/lugar-raqueta-1200.webp 1200w" sizes="(max-width:860px) 78vw, 30vw" width="600" height="900" loading="lazy" alt="Raqueta de madera apoyada en la Eco naranja"><figcaption>Después del partido</figcaption></figure>
+    <figure><img src="fotos/lugar-taller-2-600.webp" srcset="fotos/lugar-taller-2-600.webp 600w, fotos/lugar-taller-2-1200.webp 1200w" sizes="(max-width:860px) 78vw, 30vw" width="600" height="900" loading="lazy" alt="Eco cromada en el taller con un mameluco colgado"><figcaption>Fin de la jornada</figcaption></figure>
+  </div>
+</section>
+
+<section class="block" id="quien-sos">
+  <h2>¿Quién sos?</h2>
+  <div class="prose"><p>Cuatro personas, cada una en su lugar, con una silla y su prenda, frente a la misma pregunta.</p></div>
+  <div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/1wEhu0s0mWE" title="Eco — ¿Quién sos?" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+</section>
+
+<div class="hero-title" id="configurar">
+  <h1>Configurá tu Silla <svg class="eco-logo eco-inline" role="img" aria-label="Eco"><use href="#ecoLogo"/></svg></h1>
+  <p>Cada Eco es única, tu proyecto hecho silla. <span class="stock-pill">Edición limitada de 20 unidades</span></p>
+  <a class="embed-only pill-btn" href="https://eco.milnuevestudio.com/" target="_blank" rel="noopener">Conocé la historia de Eco ↗</a>
+</div>
+
+<div class="configurator">
+  <div class="preview">
+    <div class="viewer">
+      <button class="car-side car-prev" type="button" id="carPrev" aria-label="Recomendación anterior"><img alt=""></button>
+      <div class="preview-imgwrap"><div class="stage" id="stage"><canvas id="previewCanvas" width="1280" height="1280"></canvas><div id="sphereWrap"><canvas id="sphereCanvas" width="1280" height="1280"></canvas></div><canvas id="prevCanvas" width="1280" height="1280" style="pointer-events:none; opacity:0;"></canvas></div></div>
+      <button class="car-side car-next" type="button" id="carNext" aria-label="Recomendación siguiente"><img alt=""></button>
+    </div>
+    <div class="car-meta">
+      <button class="car-arrow" type="button" id="carPrevBtn" aria-label="Anterior">‹</button>
+      <div class="car-name"><span id="carName"></span><small id="carCount"></small></div>
+      <button class="car-arrow" type="button" id="carNextBtn" aria-label="Siguiente">›</button>
+    </div>
+    <button class="pill-btn car-edit" type="button" id="carEdit">Editar</button>
+    <div class="preview-caption" id="previewCaption"></div>
+  </div>
+
+  <div class="panel">
+
+    <div class="ptabs" role="tablist">
+      <button type="button" role="tab" data-tab="rec" class="active">Recomendaciones</button>
+      <button type="button" role="tab" data-tab="cfg">Configurar</button>
+    </div>
+
+    <div class="pview" id="view-rec">
+      <div class="rec-list" id="recList"></div>
+      <div class="preset-row" id="presetRow"></div>
+    </div>
+
+    <div class="pview" id="view-cfg" hidden>
+      <div class="pslide" id="pslide">
+        <div class="pmain">
+          <button class="prow" type="button" data-part="estructura"><canvas class="pthumb" width="160" height="160"></canvas><span class="prow-txt"><span class="prow-label">Estructura</span><span class="prow-cur" id="cur-estructura"></span></span><span class="prow-count" id="count-estructura"></span><span class="prow-go">›</span></button>
+          <button class="prow" type="button" data-part="esfera"><canvas class="pthumb" width="160" height="160"></canvas><span class="prow-txt"><span class="prow-label">Esfera</span><span class="prow-cur" id="cur-esfera"></span></span><span class="prow-count" id="count-esfera"></span><span class="prow-go">›</span></button>
+          <button class="prow" type="button" data-part="asiento"><canvas class="pthumb" width="160" height="160"></canvas><span class="prow-txt"><span class="prow-label">Asiento</span><span class="prow-cur" id="cur-asiento"></span></span><span class="prow-count" id="count-asiento"></span><span class="prow-go">›</span></button>
+        </div>
+        <div class="psub">
+          <button class="psub-back" type="button" id="psubBack">‹ Volver</button>
+          <h3 class="psub-title" id="psubTitle"></h3>
+          <div class="psub-body" data-part="estructura" id="body-estructura"></div>
+          <div class="psub-body" data-part="esfera" id="body-esfera"></div>
+          <div class="psub-body" data-part="asiento" id="body-asiento"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-line"><span>Precio base (IVA incluido)</span><span id="baseLine"></span></div>
+      <div class="summary-line" id="adicLine" style="display:none;"><span>Adicionales</span><span id="adicValue">$0</span></div>
+      <div class="summary-line" style="display:none;"><span>IVA (21%)</span><span id="ivaValue">$0</span></div>
+      <div class="summary-total">
+        <span class="label">Total estimado · IVA incluido</span>
+        <span class="value" id="totalValue"></span>
+      </div>
+      <button class="cta" type="button" id="ctaBtn">Enviar configuración por WhatsApp</button>
+      <div class="fine-print"><strong>Imágenes aproximadas.</strong> Los colores y acabados que ves en pantalla son una referencia: pueden diferir del producto real. Te recomendamos pedir fotos reales de las muestras antes de decidir.</div>
+      <div class="fine-print"><strong>Producto único.</strong> Cada Eco se fabrica a pedido y es personalizada, por eso puede tener variaciones respecto de lo que ves acá. Edición limitada a 20 unidades: al confirmar tu pedido se te asigna el número de producto (n.º / 20).</div>
+      <div class="fine-print">Precio final con IVA incluido. Producción a medida, 30 días aprox. Garantía de por vida con cambios de estética (pagás solo los materiales; envíos aparte). Las terminaciones se confirman por WhatsApp antes de producir y los colores especiales pueden estar sujetos a disponibilidad.</div>
+      <div class="fine-print legal">
+        <p><strong>Pedido y precio.</strong> Usar el configurador no implica una compra: el pedido se concreta cuando lo confirmás por escrito con MilDesing SAS y se acredita el pago acordado. Los precios son estimados, en pesos argentinos y pueden actualizarse hasta esa confirmación. Si detectamos un error evidente de precio, lo corregimos antes de confirmar.</p>
+        <p><strong>Producto personalizado.</strong> Como se fabrica según tus especificaciones, no corresponde el derecho de revocación (art. 1116 del Código Civil y Comercial). Esto no afecta la garantía legal de la Ley 24.240 de Defensa del Consumidor.</p>
+        <p><strong>Materiales.</strong> La madera, el terrazzo y los tapizados son materiales con variaciones naturales de veta, color y textura entre piezas; eso no es un defecto. Los plazos de producción son estimados.</p>
+        <p><strong>Edición limitada.</strong> El cupo de 20 unidades numeradas está sujeto a disponibilidad y se confirma al aceptar tu pedido.</p>
+        <div id="bases-garantia" class="bases">
+          <p><strong>Garantía de por vida: bases y condiciones.</strong></p>
+          <ol>
+            <li><strong>Alcance.</strong> MilDesing SAS garantiza de por vida cada Eco contra defectos de fabricación en la estructura metálica y sus uniones soldadas. Esta garantía se suma a la garantía legal de la Ley 24.240 y no la reemplaza ni la limita.</li>
+            <li><strong>Cambios de estética.</strong> Durante toda la vida de la silla, su titular puede pedir cambios de estética: repintado o cambio de acabado de la estructura, cambio de esfera y cambio o retapizado del asiento, entre las opciones que mil9 ofrezca en ese momento. No hay límite de cambios. La mano de obra es sin cargo; los materiales nuevos se cobran a precio de lista vigente al momento del pedido. Cada cambio se cotiza y se confirma por escrito antes de hacerse, con un plazo de producción estimado que se informa en ese momento.</li>
+            <li><strong>Envíos.</strong> La garantía de por vida y los cambios de estética no incluyen envíos, fletes, embalajes ni traslados, de ida ni de vuelta: corren por cuenta del titular. Esto no limita lo que establece la Ley 24.240 para reparaciones dentro del plazo de la garantía legal.</li>
+            <li><strong>Titularidad.</strong> La garantía acompaña a la silla y a su número (n.º / 20). Si la silla cambia de dueño, quien la reciba conserva la garantía avisándonos por WhatsApp con el número de la silla.</li>
+            <li><strong>Exclusiones.</strong> No cubre el desgaste natural por uso (rayones, marcas, desgaste de la pintura o del tapizado), golpes, caídas, mal uso, uso a la intemperie o en ambientes húmedos o salinos, cargas distintas al uso normal de una silla, ni reparaciones o modificaciones hechas por terceros. Las variaciones naturales de la madera, el terrazzo y los tapizados no son defectos.</li>
+            <li><strong>Materiales disponibles.</strong> Si un material, color o acabado deja de estar disponible, ofrecemos una alternativa equivalente.</li>
+            <li><strong>Cómo pedirla.</strong> Escribinos por WhatsApp con el número de tu silla y fotos. La evaluamos y te respondemos por escrito con la propuesta y, si corresponde, el presupuesto.</li>
+          </ol>
+        </div>
+        <p><strong>Marcas y propiedad intelectual.</strong> Blangino®, Instone®, Felpa® y los demás nombres de marcas, materiales y colores pertenecen a sus titulares y se mencionan solo para identificar los materiales. El diseño, las imágenes y el configurador pertenecen a MilDesing SAS; se prohíbe su reproducción sin autorización.</p>
+        <p><strong>Datos personales.</strong> Los datos que compartas por WhatsApp se usan solo para gestionar tu pedido (Ley 25.326). Podés pedir acceso, rectificación o supresión escribiéndonos.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="block" id="edicion">
+  <div class="facts">
+    <div class="fact"><strong>20</strong><span>unidades numeradas. Tu número (n.º / 20) se asigna al confirmar el pedido.</span></div>
+    <div class="fact"><strong>~30 días</strong><span>de producción a pedido. Cada Eco se hace para una persona.</span></div>
+    <div class="fact"><strong>Córdoba</strong><span>Diseñada y fabricada por mil9 Estudio.</span></div>
+  </div>
+</section>
+
+<section class="block" id="garantia">
+  <h2>Garantía de por vida</h2>
+  <div class="prose">
+    <p>Eco es un proyecto que no termina. Tiene garantía de por vida y, cuando cambies vos, ella también puede cambiar: repintamos la estructura, cambiamos la esfera o el asiento, renovamos el tapizado. La mano de obra corre por nuestra cuenta; vos pagás solo los materiales nuevos.</p>
+  </div>
+  <ul class="warranty">
+    <li><strong>De por vida</strong><span>contra defectos de fabricación de la estructura y sus soldaduras.</span></li>
+    <li><strong>Cambios sin límite</strong><span>de estética, todas las veces que quieras. Solo pagás los materiales, a precio vigente.</span></li>
+    <li><strong>Va con la silla</strong><span>si la regalás o la vendés, la garantía sigue con su número (n.º / 20).</span></li>
+    <li><strong>Envíos aparte</strong><span>la garantía y los cambios no incluyen envíos ni traslados.</span></li>
+  </ul>
+  <a class="pill-btn" href="#bases-garantia">Ver bases y condiciones</a>
+</section>
+
+<section class="block" id="preguntas">
+  <h2>Preguntas</h2>
+  <div class="faq">
+    <details><summary>¿Usar el configurador es una compra?</summary><p>No. El configurador arma tu propuesta y la manda por WhatsApp. El pedido se concreta cuando lo confirmás por escrito con MilDesing SAS y se acredita el pago acordado.</p></details>
+    <details><summary>¿Cuánto tarda en estar lista?</summary><p>Unos 30 días de producción a pedido. Antes de producir confirmamos con vos las terminaciones por WhatsApp.</p></details>
+    <details><summary>¿Por qué son solo 20?</summary><p>Eco es una edición limitada y numerada. Cada silla lleva su número, que se asigna al confirmar el pedido y está sujeto a disponibilidad.</p></details>
+    <details><summary>¿Los colores de la pantalla son exactos?</summary><p>Son una referencia: pueden diferir del producto real. Si querés, te mandamos fotos reales de las muestras antes de decidir. La madera, el terrazzo y los tapizados tienen variaciones naturales entre piezas.</p></details>
+    <details><summary>¿Puedo pedir algo que no está en el configurador?</summary><p>Sí. Elegí «Se me ocurre otra cosa» y lo charlamos para hacer un pedido aún más especial.</p></details>
+    <details><summary>¿Qué cubre la garantía de por vida?</summary><p>Los defectos de fabricación de la estructura y sus soldaduras, para siempre. Además, podés cambiarle la estética cuantas veces quieras: la mano de obra es nuestra y vos pagás solo los materiales. Los envíos no están incluidos. <a href="#bases-garantia">Ver bases y condiciones</a>.</p></details>
+    <details><summary>¿Puedo cambiarle el color más adelante?</summary><p>Sí. Repintamos la estructura, cambiamos la esfera o el asiento, o renovamos el tapizado. Pagás solo los materiales a precio vigente, más el envío. Eco está pensada para cambiar con vos.</p></details>
+    <details><summary>¿Se puede devolver?</summary><p>Al ser un producto fabricado según tus especificaciones, no corresponde el derecho de revocación (art. 1116 del Código Civil y Comercial). Esto no afecta la garantía legal de la Ley 24.240.</p></details>
+  </div>
+</section>
+
+<section class="block about" id="mil9">
+  <h2>¿Quién, qué es mil9?</h2>
+  <div class="about-grid">
+  <div class="prose">
+    <p>Es producto, es arte, es vestidor, es proyecto, es diseño.</p>
+    <p>Eco se enmarca en la pregunta ¿Quién soy?, una pregunta que nos hicimos como estudio a lo largo de 2025. Con el correr de los meses fuimos encontrando definiciones conceptuales, económicas, de modelo de negocio y de personalidad. Eco nos devuelve esas respuestas: la llegada que queremos tener al público desde el diseño conceptual de objetos funcionales y complejos.</p>
+    <p class="about-sign">Lucas Revol, Ignacio Miranda — mil9 Estudio, Córdoba.<br>Muestra «Ello, Yo y SuperYo», Museo Caraffa, noviembre de 2025.</p>
+  </div>
+  <figure class="about-inv"><img src="fotos/invitacion-caraffa-600.webp" srcset="fotos/invitacion-caraffa-600.webp 600w, fotos/invitacion-caraffa-1200.webp 1200w" sizes="(max-width:860px) 90vw, 30vw" width="600" height="849" loading="lazy" alt="Invitación a la muestra «Eco: Ello, Yo y SuperYo» en el Museo Emilio Caraffa"><figcaption>Invitación a la muestra en el Museo Caraffa.</figcaption></figure>
+  </div>
+</section>
+
+<footer>Este es un producto registrado de MilDesing SAS. Todos los derechos reservados.</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <div class="modal-title">Confirmá tu configuración</div>
+    <div class="modal-sub">Revisá que esté todo bien antes de mandarlo por WhatsApp.</div>
+    <div class="modal-lines" id="modalLines"></div>
+    <label style="display:flex; gap:10px; align-items:flex-start; font-size:12px; line-height:1.5; color:var(--ink-soft); margin-bottom:20px; cursor:pointer;">
+      <input type="checkbox" id="ackBox" style="margin-top:3px; flex-shrink:0;">
+      <span>Entiendo que, al ser un producto único y personalizado, es un experimento y puede variar respecto de las imágenes. Y estamos felices de que así sea.</span>
+    </label>
+    <div class="modal-total"><span>Total estimado</span><strong id="modalTotal"></strong></div>
+    <div class="modal-actions">
+      <button class="modal-btn" type="button" id="modalCancel">Volver</button>
+      <button class="modal-btn solid" type="button" id="modalConfirm">Confirmar y enviar</button>
+    </div>
+  </div>
+</div>
+
+<div id="miniChair" aria-hidden="true"><canvas width="300" height="366"></canvas></div>
+
+<div class="mbar" id="mbar" aria-hidden="true">
+  <div class="mbar-price"><small>Total · IVA incluido</small><strong id="mbarTotal"></strong></div>
+  <button class="mbar-cta" type="button" id="mbarCta" tabindex="-1">Pedir por WhatsApp</button>
+</div>
+
+<script>
+const IMGDATA = null; /*EMBED*/
+const EMBED = document.documentElement.classList.contains("embed");
+const NAV_H = EMBED ? 0 : 64;   // alto de la barra de navegación fija (no existe en modo embebido)
+// Renders de terrazzo: se usan con el nombre de archivo original
+const IMG_ALIAS = {};
+const FILE = n => IMG_ALIAS[n] ? encodeURIComponent(IMG_ALIAS[n]) : n;
+const IMG = n => IMGDATA ? IMGDATA[n] : "img/" + FILE(n) + (n.startsWith("thumb-") ? ".jpg" : ".png");
+
+let mixKey = "", elloKey = "", superKey = "";
+const isSuper = () => !!superKey && configKey() === superKey;   // "Superyo": render dorado propio
+const isEllo = () => !!elloKey && configKey() === elloKey;   // "Ello": sin esfera, precio base
+const isMix = () => !!mixKey && configKey() === mixKey;   // "Se me ocurre otra cosa": todo queda sin definir (∞)
+const BASE = 159000;
+const IVA = 0.21;
+
+// Paleta "Pintura laqueada" (30) y "Colores especiales" (resto). Hex tomados de pantalla: referenciales.
+const LAQUEADA = __LAQUEADA__;
+const ESPECIALES = __ESPECIALES__;
+const EPOXY_NAMES = __EPOXY__;
+// Terracota: color extra solo para Epoxy (hex tomado del rojo ladrillo de la paleta, referencial)
+const EPOXY_EXTRA = [["Terracota", "#a5544a"]];
+const EPOXY_BIFINISH = ["Blanco", "Negro"];
+const EPOXY = LAQUEADA.filter(c => EPOXY_NAMES.includes(c[0])).concat(EPOXY_EXTRA);
+const FELPAS = [
+  {n:"Sunset", f:"sunset"}, {n:"Sunset II", f:"sunset-ii"}, {n:"La Musique", f:"la-musique"}, {n:"Ser B&N", f:"ser-byn"}
+];
+
+const TERRAZZO_NOTE = "Terrazzo Blangino® × Instone®: alianza entre dos marcas registradas. Imagen referencial; cada pieza tiene un diseño de vetas único.";
+const BG_CRUDO = "#c9c6bd";
+const BG_CROMO = "linear-gradient(135deg,#e8eaeb,#b7bcc0)";
+const BG_TORNA = "linear-gradient(135deg,#5aa0c9,#c95a9e,#e0c95a)";
+const BG_LAQ = "conic-gradient(#af2734,#ff9800,#fedf00,#72b896,#0061a9,#9079af,#af2734)";
+const BG_EPX = "linear-gradient(135deg,#0061a9 50%,#af2734 50%)";
+const BG_TERR_ANS = "radial-gradient(circle at 28% 32%,#8a3a4a 0 2px,transparent 3px) 0 0/9px 9px,radial-gradient(circle at 72% 68%,#a9c5ab 0 2px,transparent 3px) 0 0/7px 7px,#eeeeec";
+const BG_TERR_IGU = "radial-gradient(circle at 28% 32%,#13803a 0 2.2px,transparent 3.2px) 0 0/8px 8px,radial-gradient(circle at 72% 68%,#13803a 0 1.5px,transparent 2.5px) 0 0/6px 6px,#eeeeec";
+const BG_ROBLE = "#c8a878", BG_GUAT = "#e8d9a8";
+
+const EST_OPTS = [
+  {n:"Crudo", p:0, bg:BG_CRUDO, img:"estructura-crudo"},
+  {n:"Cromado", p:160000, bg:BG_CROMO, img:"estructura-cromado"},
+  {n:"Tornasolado", p:160000, bg:BG_TORNA, img:"estructura-tornasolado"},
+  {n:"Pintura laqueada", p:30000, bg:BG_LAQ, paint:"laqueada"},
+  {n:"Epoxy", p:0, bg:BG_EPX, paint:"epoxy"}
+];
+const ESF_OPTS = {
+  Madera: [
+    {n:"Roble", p:60000, bg:BG_ROBLE, img:"esfera-madera-roble"},
+    {n:"Guatambú", p:0, bg:BG_GUAT, img:"esfera-madera-guatambu"},
+    {n:"Pintura laqueada", p:30000, bg:BG_LAQ, paint:"laqueada"}
+  ],
+  Terrazzo: [
+    {n:"Ansenuza", p:60000, bg:BG_TERR_ANS, img:"esfera-terrazzo-ansenuza"},
+    {n:"Iguazú", p:60000, bg:BG_TERR_IGU, img:"esfera-terrazzo-iguazu"}
+  ],
+  Metal: [
+    {n:"Crudo", p:160000, bg:BG_CRUDO, img:"esfera-metal-crudo"},
+    {n:"Cromado", p:190000, bg:BG_CROMO, img:"esfera-metal-cromado"},
+    {n:"Epoxy", p:160000, bg:BG_EPX, paint:"epoxy"}
+  ]
+};
+const ASI_OPTS = {
+  Madera: [
+    {n:"Roble", p:210000, bg:BG_ROBLE, img:"asiento-madera-roble"},
+    {n:"Guatambú", p:180000, bg:BG_GUAT, img:"asiento-madera-guatambu"}
+  ],
+  Terrazzo: [
+    {n:"Ansenuza", p:210000, bg:BG_TERR_ANS, img:"asiento-terrazzo-ansenuza"},
+    {n:"Iguazú", p:210000, bg:BG_TERR_IGU, img:"asiento-terrazzo-iguazu"}
+  ],
+  Tapizado: [
+    {n:"Felpa", p:90000, bg:"#8a7863", sub:"felpa"},
+    {n:"Pana", p:80000, bg:"repeating-linear-gradient(90deg,#efece6,#efece6 2px,#e2ded6 2px,#e2ded6 4px)", sub:"color"},
+    {n:"Pana bouclé", p:80000, bg:"radial-gradient(circle at 30% 30%,#fbf9f4 0 3px,transparent 4px) 0 0/9px 9px,radial-gradient(circle at 70% 65%,#e9e4d9 0 3px,transparent 4px) 0 0/9px 9px,#f3efe6", sub:"color"}
+  ]
+};
+// Asiento de metal: va soldado a la estructura, mismo acabado. Precio según el acabado de la estructura.
+const ASI_METAL_PRICE = {"Crudo":0, "Tornasolado":215000, "Cromado":215000, "Pintura laqueada":95000, "Epoxy":0};
+const ASI_METAL_IMG = {"Crudo":"asiento-metal-crudo", "Cromado":"asiento-metal-cromado", "Tornasolado":"asiento-metal-tornasolado"};
+
+const state = {
+  est: {opt:"Crudo", color:null, finish:"Mate"},
+  esf: {fam:"Madera", opt:"Guatambú", color:null, finish:"Mate"},
+  asi: {fam:"Metal", opt:null, felpa:"Sunset", color:null}
+};
+let pageJustOpened = true;
+
+const disp = t => String(t).replace(/Felpa(?!®)/g, "Felpa®");
+function fmt(n){ return "$" + Math.round(n).toLocaleString("es-AR"); }
+const colorByName = (list, n) => list.find(c => c[0] === n);
+
+/* ---------- lógica de estado ---------- */
+function estOpt(){ return EST_OPTS.find(o => o.n === state.est.opt); }
+function esfOpt(){ if (state.esf.same) return {n:"Igual que estructura", p:30000, same:true}; return ESF_OPTS[state.esf.fam].find(o => o.n === state.esf.opt); }
+function asiOpt(){
+  if (state.asi.fam === "Metal") return null;
+  return ASI_OPTS[state.asi.fam].find(o => o.n === state.asi.opt);
+}
+function normalize(){
+  if (state.esf.same && !estOpt().paint){ state.esf.same = false; state.esf.fam = "Madera"; state.esf.opt = "Guatambú"; }
+  if (state.asi.fam !== "Metal" && !asiOpt()) state.asi.opt = ASI_OPTS[state.asi.fam][0].n;
+  // colores por defecto cuando la opción es pintada
+  const e = estOpt(); if (e.paint && !state.est.color) state.est.color = "Blanco";
+  const s = esfOpt(); if (s && s.paint && !state.esf.color) state.esf.color = "Blanco";
+  if (e.paint === "epoxy" && !colorByName(EPOXY, state.est.color)) state.est.color = "Blanco";
+  if (s && s.paint === "epoxy" && !colorByName(EPOXY, state.esf.color)) state.esf.color = "Blanco";
+  if (state.asi.fam === "Tapizado" && (state.asi.opt === "Pana" || state.asi.opt === "Pana bouclé") && !state.asi.color) state.asi.color = "Blanco";
+  // Epoxy: solo blanco y negro existen en mate y brillante; los demás colores son satinados.
+  [["est", estOpt()], ["esf", esfOpt()]].forEach(([k, o]) => {
+    if (!o || !o.paint) return;
+    const pc = state[k];
+    if (o.paint === "epoxy") pc.finish = EPOXY_BIFINISH.includes(pc.color) ? (pc.finish === "Satinado" ? "Mate" : pc.finish) : "Satinado";
+    else if (pc.finish === "Satinado") pc.finish = "Mate";
+  });
+}
+const ZEBRA = ["Arte", "art"];
+function allColors(){ return LAQUEADA.concat(ESPECIALES, EPOXY_EXTRA, [ZEBRA]); }
+const cn = c => c === "Arte" ? "logo MIL9 repetido" : c;
+function hexOf(list, name){ const c = colorByName(list, name); return c ? c[1] : null; }
+
+function priceBreakdown(){
+  if (isEllo()) return {e:0, s:0, a:0, adic:0};
+  const e = estOpt().p, s = esfOpt().p;
+  let a = 0;
+  if (state.asi.fam === "Metal") a = ASI_METAL_PRICE[state.est.opt] || 0;
+  else a = asiOpt().p;
+  return {e, s, a, adic: e + s + a};
+}
+
+// Todo texto que va a innerHTML pasa por esc(): ningún valor (ni siquiera uno que venga de un link) se interpreta como HTML
+const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inf = t => t === "∞" ? '<span class="bigInf">∞</span>' : esc(t);
+function describeEst(){
+  if (isMix()) return "∞";
+  if (isSuper()) return "Metal dorado · brillante";
+  if (isEllo()) return "Crudo";
+  const o = estOpt();
+  if (!o.paint) return o.n;
+  return o.n + " · " + cn(state.est.color) + (state.est.color === "Arte" ? "" : " · " + state.est.finish.toLowerCase());
+}
+function describeEsf(){
+  if (isMix()) return "∞";
+  if (isSuper()) return "Metal dorado · brillante";
+  if (isEllo()) return "Sin esfera";
+  const o = esfOpt();
+  if (o.same) return "Igual que estructura (madera laqueada · " + cn(state.est.color) + (state.est.color === "Arte" ? "" : ", " + state.est.finish.toLowerCase()) + ")";
+  if (!o.paint) return state.esf.fam + " " + o.n;
+  return state.esf.fam + " " + o.n + " · " + state.esf.color + " · " + state.esf.finish.toLowerCase();
+}
+function describeAsi(){
+  if (isMix()) return "∞";
+  if (isSuper()) return "Metal dorado · brillante";
+  if (state.asi.fam === "Metal"){
+    const o = estOpt();
+    return "Metal · igual a la estructura" + (o.paint ? " (" + o.n + " " + cn(state.est.color) + (state.est.color === "Arte" ? "" : ", " + state.est.finish.toLowerCase()) + ")" : " (" + o.n + ")");
+  }
+  const o = asiOpt();
+  if (state.asi.fam === "Madera") return "Madera " + o.n;
+  if (state.asi.fam === "Terrazzo") return "Terrazzo " + o.n;
+  if (o.n === "Felpa") return "Tapizado Felpa® · " + state.asi.felpa;
+  return "Tapizado " + o.n + " · color " + state.asi.color;
+}
+
+/* ---------- render del preview ---------- */
+const imgCache = {};
+function loadImg(n){
+  if (!imgCache[n]) imgCache[n] = new Promise((res, rej) => {
+    const im = new Image(); im.onload = () => res(im); im.onerror = () => rej(new Error(n)); im.src = IMG(n);
+  });
+  return imgCache[n];
+}
+const tintCache = {};
+async function layer(name, hex){
+  const im = await loadImg(name);
+  if (!hex || hex.toLowerCase() === "#ffffff") return im;
+  const key = name + "|" + hex;
+  if (tintCache[key]) return tintCache[key];
+  const c = document.createElement("canvas"); c.width = im.width; c.height = im.height;
+  const x = c.getContext("2d");
+  if (hex === "art"){
+    // solo se estampa el objeto (alfa alto); la sombra y el velo del render quedan intactos
+    const m = document.createElement("canvas"); m.width = im.width; m.height = im.height;
+    const mx = m.getContext("2d"); mx.drawImage(im, 0, 0);
+    const d = mx.getImageData(0, 0, m.width, m.height), a = d.data;
+    for (let k = 3; k < a.length; k += 4) a[k] = a[k] >= 140 ? 255 : 0;
+    mx.putImageData(d, 0, 0);
+    const ai = await loadImg("zebra-color");
+    const t = document.createElement("canvas"); t.width = im.width; t.height = im.height;
+    const tx = t.getContext("2d");
+    tx.drawImage(m, 0, 0); tx.globalCompositeOperation = "multiply"; tx.drawImage(ai, 0, 0, im.width, im.height);
+    tx.globalCompositeOperation = "destination-in"; tx.drawImage(m, 0, 0);
+    x.drawImage(im, 0, 0); x.drawImage(t, 0, 0);
+    tintCache[key] = c; return c;
+  }
+  x.drawImage(im, 0, 0);
+  x.globalCompositeOperation = "multiply";
+  x.fillStyle = hex; x.fillRect(0, 0, c.width, c.height);
+  x.globalCompositeOperation = "destination-in"; x.drawImage(im, 0, 0);
+  tintCache[key] = c; return c;
+}
+function estLayer(){
+  const o = estOpt();
+  if (!o.paint) return [o.img, null];
+  const gloss = state.est.finish === "Brillante";
+  const base = gloss ? "estructura-laqueada-blanco-brillante" : (o.paint === "epoxy" ? "estructura-epoxy-blanco" : "estructura-laqueada-blanco");
+  return [base, hexOf(allColors(), state.est.color)];
+}
+function esfLayer(){
+  const o = esfOpt();
+  if (o.same) return [state.est.finish === "Brillante" ? "esfera-madera-laqueada-blanco-brillante" : "esfera-madera-laqueada-blanco", hexOf(allColors(), state.est.color)];
+  if (!o.paint) return [o.img, null];
+  const gloss = state.esf.finish === "Brillante";
+  return [gloss ? "esfera-madera-laqueada-blanco-brillante" : "esfera-madera-laqueada-blanco", hexOf(allColors(), state.esf.color)];
+}
+function asiLayer(){
+  if (state.asi.fam === "Metal"){
+    const o = estOpt();
+    if (!o.paint) return [ASI_METAL_IMG[o.n], null];
+    const gloss = state.est.finish === "Brillante";
+    return [gloss ? "asiento-metal-laqueado-blanco-brillante" : "asiento-metal-epoxy-blanco", hexOf(allColors(), state.est.color)];
+  }
+  const o = asiOpt();
+  if (o.img) return [o.img, null];
+  if (o.n === "Felpa") return ["asiento-tapizado-felpa-" + FELPAS.find(f => f.n === state.asi.felpa).f, null];
+  return [o.n === "Pana bouclé" ? "asiento-tapizado-pana-boucle" : "asiento-tapizado-pana", hexOf(allColors(), state.asi.color)];  // pana teñida
+}
+let drawToken = 0, mixShown = false;
+// "Se me ocurre otra cosa": render en reposo (con sombra) -> las piezas se separan -> render desarmado (con sombra)
+const MIX_META = {st:[41,43,1272,1158], seat:[673,210,1257,641], ball:[571,25,800,257], baton:[255,1071,855,1275], dot:[912,983,1015,1088]};
+const MIX_START = {st:[600,650,0,.98,1.1], seat:[665,640,-.10,.95,.55], ball:[775,160,0,.78,.78], baton:[580,925,0,.85,.85], dot:[665,885,0,.55,.55]};
+const MIX_ORDER = ["st","baton","dot","seat","ball"];
+async function mixAssets(){
+  const names = ["mix-1","mix-2"].concat(MIX_ORDER.map(k => "mix-" + k));
+  const imgs = await Promise.all(names.map(loadImg));
+  const A = {m1: imgs[0], m2: imgs[1]};
+  MIX_ORDER.forEach((k, i) => A[k] = imgs[i + 2]);
+  return A;
+}
+// p: avance suavizado (0..1) de las piezas; u: avance lineal para los fundidos
+function drawMixPose(x, W, H, A, p, u){
+  const f = Math.min(1, u / .15), m2 = Math.max(0, Math.min(1, (u - .82) / .18));
+  x.clearRect(0, 0, W, H);
+  if (m2 > 0){ x.globalAlpha = m2; x.drawImage(A.m2, 0, 0, W, H); }
+  x.globalAlpha = 1 - f; if (f < 1) x.drawImage(A.m1, 0, 0, W, H);
+  const q = p * (1 - m2);
+  MIX_ORDER.forEach(k => {
+    const b = MIX_META[k], w = b[2] - b[0], h = b[3] - b[1], c0 = MIX_START[k];
+    const cx1 = (b[0] + b[2]) / 2, cy1 = (b[1] + b[3]) / 2;
+    const cx = c0[0] + (cx1 - c0[0]) * p, cy = c0[1] + (cy1 - c0[1]) * p;
+    x.save();
+    x.globalAlpha = k === "st" ? Math.min(1, Math.max(0, (u - .03) / .17)) : f;
+    if (q > 0){ x.shadowColor = "rgba(0,0,0," + (0.26 * q) + ")"; x.shadowBlur = 24 * q; x.shadowOffsetY = 30 * q; }
+    x.translate(cx, cy); x.rotate(c0[2] * (1 - p)); x.scale(c0[3] + (1 - c0[3]) * p, c0[4] + (1 - c0[4]) * p);
+    x.drawImage(A[k], -w / 2, -h / 2, w, h); x.restore();
+  });
+  x.globalAlpha = 1;
+}
+function explodeAnim(token, x, W, H, A){
+  const D = 2200, HOLD = 450;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  drawMixPose(x, W, H, A, 0, 0);
+  return new Promise(res => {
+    const t0 = performance.now() + HOLD;   // primero se ve la silla en reposo
+    const frame = now => {
+      if (token !== drawToken) return res();
+      const u = Math.max(0, Math.min(1, (now - t0) / D));
+      drawMixPose(x, W, H, A, ease(u), u);
+      if (u < 1) requestAnimationFrame(frame); else res();
+    };
+    requestAnimationFrame(frame);
+  });
+}
+const REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+async function drawPreview(){
+  const token = ++drawToken;
+  const specs = [estLayer(), esfLayer(), asiLayer()];
+  try{
+    const mixImg = isMix() ? await mixAssets() : (isEllo() ? await loadImg("ello-render") : (isSuper() ? await loadImg("superyo-render") : null));
+    const imgs = mixImg ? [] : await Promise.all([loadImg("sombra")].concat(specs.map(s => layer(s[0], s[1]))));
+    if (token !== drawToken) return;
+    const cv = document.getElementById("previewCanvas"), x = cv.getContext("2d");
+    const pv = document.getElementById("prevCanvas"), px = pv.getContext("2d");
+    const sv = document.getElementById("sphereCanvas"), sx = sv.getContext("2d");
+    // fundido cruzado: la imagen anterior se desvanece sobre la nueva
+    px.clearRect(0, 0, pv.width, pv.height); px.drawImage(cv, 0, 0); px.drawImage(sv, 0, 0);
+    pv.style.transition = "none"; pv.style.opacity = "1";
+    const W = cv.width, H = cv.height, SPLIT = 400;
+    x.clearRect(0, 0, W, H); sx.clearRect(0, 0, W, H);
+    if (mixImg){
+      const wasMix = mixShown; mixShown = isMix();
+      if (isMix()){
+        if (!wasMix && !REDUCED){
+          void pv.offsetWidth; pv.style.transition = "opacity .3s ease"; pv.style.opacity = "0";
+          await explodeAnim(token, x, W, H, mixImg);
+          return;
+        }
+        drawMixPose(x, W, H, mixImg, 1, 1);
+        void pv.offsetWidth; pv.style.transition = "opacity .45s ease"; pv.style.opacity = "0";
+        return;
+      }
+      x.drawImage(await loadImg("sombra"), 0, 0, W, H);
+      x.drawImage(mixImg, 0, 0, W, H);
+      void pv.offsetWidth; pv.style.transition = "opacity .45s ease"; pv.style.opacity = "0";
+      return;
+    }
+    mixShown = false;
+    x.drawImage(imgs[0], 0, 0, W, H); x.drawImage(imgs[1], 0, 0, W, H);
+    // esfera: la parte baja (pie) queda fija en el canvas principal; la bola de arriba va en su propio canvas y se mueve
+    x.save(); x.beginPath(); x.rect(0, SPLIT, W, H - SPLIT); x.clip(); x.drawImage(imgs[2], 0, 0, W, H); x.restore();
+    sx.save(); sx.beginPath(); sx.rect(0, 0, W, SPLIT); sx.clip(); sx.drawImage(imgs[2], 0, 0, W, H); sx.restore();
+    x.drawImage(imgs[3], 0, 0, W, H);
+    void pv.offsetWidth;
+    pv.style.transition = "opacity .45s ease"; pv.style.opacity = "0";
+  }catch(err){ console.error("No se pudo cargar el render:", err.message); }
+}
+
+/* ---------- UI ---------- */
+function swatchCell(bg, label, selected, onclick, opts){
+  opts = opts || {};
+  const cell = document.createElement("div"); cell.className = "swatch-cell";
+  const b = document.createElement("button"); b.type = "button";
+  b.className = "swatch" + (selected ? " selected" : "");
+  if (opts.thumb){ b.style.backgroundImage = "url(" + opts.thumb + ")"; b.style.backgroundSize = "cover"; b.style.backgroundPosition = "center"; }
+  else b.style.background = bg;
+  b.title = disp(label);
+  b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; onclick(); update(); });
+  const l = document.createElement("span"); l.className = "swatch-label"; l.textContent = disp(label);
+  cell.appendChild(b); cell.appendChild(l); return cell;
+}
+function row(){ const r = document.createElement("div"); r.className = "swatches"; return r; }
+function label(txt){ const d = document.createElement("div"); d.className = "group-label"; d.textContent = txt; return d; }
+function note(txt){ const d = document.createElement("div"); d.className = "fine-print"; d.textContent = txt; d.style.marginTop = "10px"; return d; }
+function toggle(items, active, onpick, disabled){
+  const t = document.createElement("div"); t.className = "family-toggle";
+  items.forEach(n => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = n;
+    if (n === active) b.classList.add("active");
+    if (disabled && disabled.includes(n)){ b.disabled = true; b.style.opacity = ".35"; b.style.cursor = "not-allowed"; }
+    b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; if (n !== active){ onpick(n); update(); } });
+    t.appendChild(b);
+  });
+  return t;
+}
+function syncFromEst(){
+  // La esfera pintada (no "igual") acompaña el color y acabado de la estructura.
+  const o = esfOpt();
+  if (!o || !o.paint || !estOpt().paint) return;
+  const list = o.paint === "epoxy" ? EPOXY : LAQUEADA.concat(ESPECIALES);
+  if (colorByName(list, state.est.color)) state.esf.color = state.est.color;
+  state.esf.finish = state.est.finish;
+}
+function colorRows(wrap, piece, o){
+  // piece: objeto de estado con .color y .finish
+  wrap.appendChild(label("Acabado"));
+  if (o.paint === "epoxy" && !EPOXY_BIFINISH.includes(piece.color)) wrap.appendChild(toggle(["Satinado"], "Satinado", () => {}));
+  else wrap.appendChild(toggle(["Mate", "Brillante"], piece.finish, n => { piece.finish = n; if (piece === state.est) syncFromEst(); }));
+  const list = o.paint === "epoxy" ? EPOXY : LAQUEADA;
+  wrap.appendChild(label("Color (" + o.n + ")"));
+  const r = row();
+  list.forEach(c => r.appendChild(swatchCell(c[1], c[0], piece.color === c[0], () => { piece.color = c[0]; if (piece === state.est) syncFromEst(); })));
+  wrap.appendChild(r);
+  if (o.paint === "epoxy") wrap.appendChild(note("Salvedad: en Epoxy solo el blanco y el negro están disponibles en brillante y mate. Los demás colores son satinados."));
+  if (o.paint === "laqueada"){
+    wrap.appendChild(label("Colores especiales"));
+    const r2 = row();
+    ESPECIALES.forEach(c => r2.appendChild(swatchCell(c[1], c[0], piece.color === c[0], () => { piece.color = c[0]; if (piece === state.est) syncFromEst(); })));
+    wrap.appendChild(r2);
+    wrap.appendChild(note("Color referencial: se confirma por WhatsApp antes de producir."));
+  }
+}
+function optionRow(opts, activeName, pick){
+  const r = row();
+  opts.forEach(o => r.appendChild(swatchCell(o.bg, o.n, o.n === activeName, () => pick(o))));
+  return r;
+}
+function subPanel(){ const d = document.createElement("div"); d.className = "sub-swatches open"; return d; }
+
+function buildEstructura(){
+  const body = document.getElementById("body-estructura"); body.innerHTML = "";
+  body.appendChild(optionRow(EST_OPTS, state.est.opt, o => {
+    state.est.opt = o.n; if (o.paint) state.est.color = state.est.color || "Blanco"; normalize(); syncFromEst();
+  }));
+  const o = estOpt();
+  if (o.paint){ const p = subPanel(); colorRows(p, state.est, o); body.appendChild(p); }
+}
+function buildEsfera(){
+  const body = document.getElementById("body-esfera"); body.innerHTML = "";
+  if (estOpt().paint){
+    body.appendChild(optionRow([{n:"Igual que estructura (madera laqueada)", bg:BG_LAQ}], state.esf.same ? "Igual que estructura (madera laqueada)" : null, () => { state.esf.same = true; }));
+    body.appendChild(label("O elegir otra esfera"));
+  }
+  body.appendChild(toggle(["Madera", "Terrazzo", "Metal"], state.esf.same ? null : state.esf.fam, n => { state.esf.same = false; state.esf.fam = n; state.esf.opt = ESF_OPTS[n][0].n; normalize(); }));
+  if (state.esf.same){ body.appendChild(note("La esfera lleva el mismo color y acabado que la estructura, en madera laqueada.")); return; }
+  body.appendChild(optionRow(ESF_OPTS[state.esf.fam], state.esf.opt, o => { state.esf.opt = o.n; normalize(); syncFromEst(); }));
+  if (state.esf.fam === "Terrazzo") body.appendChild(note(TERRAZZO_NOTE));
+  const o = esfOpt();
+  if (o.paint){ const p = subPanel(); colorRows(p, state.esf, o); body.appendChild(p); }
+}
+function buildAsiento(){
+  const body = document.getElementById("body-asiento"); body.innerHTML = "";
+  if (estOpt().paint){
+    body.appendChild(optionRow([{n:"Igual que estructura", bg:BG_LAQ}], state.asi.fam === "Metal" ? "Igual que estructura" : null, () => { state.asi.fam = "Metal"; state.asi.opt = null; }));
+    body.appendChild(label("O elegir otro asiento"));
+  }
+  body.appendChild(toggle(["Madera", "Terrazzo", "Tapizado", "Metal"], state.asi.fam, n => {
+    state.asi.fam = n; state.asi.opt = n === "Metal" ? null : ASI_OPTS[n][0].n; normalize();
+  }));
+  if (state.asi.fam === "Metal"){
+    const p = subPanel();
+    p.appendChild(note("El asiento de metal va soldado a la estructura: siempre lleva el mismo acabado y color. Para cambiarlo, modificá la estructura."));
+    body.appendChild(p); return;
+  }
+  body.appendChild(optionRow(ASI_OPTS[state.asi.fam], state.asi.opt, o => { state.asi.opt = o.n; normalize(); }));
+  if (state.asi.fam === "Terrazzo") body.appendChild(note(TERRAZZO_NOTE));
+  const o = asiOpt();
+  if (o.sub === "felpa"){
+    const p = subPanel(); p.appendChild(label("Estampado"));
+    const r = row();
+    FELPAS.forEach(f => r.appendChild(swatchCell(null, f.n, state.asi.felpa === f.n, () => { state.asi.felpa = f.n; }, {thumb: IMG("thumb-felpa-" + f.f)})));
+    p.appendChild(r); body.appendChild(p);
+  } else if (o.sub === "color"){
+    const p = subPanel(); p.appendChild(label("Color de la tela"));
+    const r = row();
+    LAQUEADA.forEach(c => r.appendChild(swatchCell(c[1], c[0], state.asi.color === c[0], () => { state.asi.color = c[0]; })));
+    p.appendChild(r);
+    p.appendChild(label("Colores especiales"));
+    const r2 = row();
+    ESPECIALES.forEach(c => r2.appendChild(swatchCell(c[1], c[0], state.asi.color === c[0], () => { state.asi.color = c[0]; })));
+    p.appendChild(r2);
+    p.appendChild(note("Color referencial: se confirma por WhatsApp antes de producir."));
+    body.appendChild(p);
+  }
+}
+
+function update(){
+  normalize();
+  buildEstructura(); buildEsfera(); buildAsiento();
+  document.getElementById("cur-estructura").innerHTML = inf(describeEst());
+  document.getElementById("cur-esfera").innerHTML = inf(describeEsf());
+  document.getElementById("cur-asiento").innerHTML = inf(describeAsi());
+  const pb = priceBreakdown();
+  const sub = BASE + pb.adic, iva = Math.round(sub * IVA);
+  const totP = Math.round(sub * (1 + IVA)), adicP = Math.round(pb.adic * (1 + IVA));
+  document.getElementById("baseLine").textContent = fmt(totP - adicP);
+  const mix = !!mixKey && configKey() === mixKey;  // "Se me ocurre otra cosa": precio infinito
+  document.getElementById("ivaValue").innerHTML = mix ? inf("∞") : fmt(iva);
+  setOdo(document.getElementById("totalValue"), mix ? "∞" : fmt(sub + iva));
+  document.getElementById("mbarTotal").innerHTML = mix ? inf("∞") : fmt(sub + iva);
+  const al = document.getElementById("adicLine");
+  if (pb.adic > 0){ al.style.display = "flex"; document.getElementById("adicValue").innerHTML = mix ? "+" + inf("∞") : "+" + fmt(adicP); } else al.style.display = "none";
+  document.getElementById("previewCaption").innerHTML = (isMix() ? "Estructura " : "") + inf(describeEst()) + " · Esfera " + inf(describeEsf()) + " · Asiento " + inf(describeAsi());
+  applyTitleColor();
+  Viewer.render().then(afterRender);
+  syncCarousel();
+  syncHash();
+}
+
+/* ---------- extras: odómetro, nombre, ola de color, sorpresa ---------- */
+function setOdo(el, str){
+  el.classList.add("odo"); el.classList.toggle("inf", str === "∞"); el.dataset.val = str; el.setAttribute("aria-label", str);
+  const chars = [...str];
+  if (el._odoLen !== chars.length){
+    el.innerHTML = ""; el._odoLen = chars.length; el._strips = [];
+    chars.forEach(ch => {
+      if (/\d/.test(ch)){
+        const col = document.createElement("span"); col.className = "odo-col"; col.setAttribute("aria-hidden", "true");
+        const st = document.createElement("span"); st.className = "odo-strip";
+        for (let d = 0; d < 10; d++){ const i = document.createElement("i"); i.textContent = d; st.appendChild(i); }
+        col.appendChild(st); el.appendChild(col); el._strips.push(st);
+      } else {
+        const s = document.createElement("span"); s.className = "odo-sep"; s.textContent = ch; s.setAttribute("aria-hidden", "true"); el.appendChild(s); el._strips.push(null);
+      }
+    });
+    void el.offsetWidth;
+  }
+  chars.forEach((ch, i) => {
+    const st = el._strips[i]; if (!st) return;
+    st.style.transitionDelay = ((chars.length - 1 - i) * 40) + "ms";
+    st.style.transform = "translateY(-" + (+ch * 1.15) + "em)";
+  });
+}
+function configKey(){ return JSON.stringify([state.est, state.esf, state.asi]); }
+// Ola de color: el fondo nuevo se expande en círculo desde el punto donde se hizo click.
+let lastClick = null, prevWash = [255, 255, 255], waveRaf = 0;
+document.addEventListener("click", e => { lastClick = {x: e.pageX, y: e.pageY, t: Date.now()}; }, true);
+function runWave(from, to, pt){
+  cancelAnimationFrame(waveRaf);
+  const de = document.documentElement;
+  const maxR = Math.hypot(Math.max(pt.x, de.scrollWidth - pt.x), Math.max(pt.y, de.scrollHeight - pt.y)) + 60;
+  const f = "rgb(" + from.join(",") + ")", t = "rgb(" + to.join(",") + ")", t0 = performance.now(), D = 1100;
+  const step = now => {
+    const k = Math.min(1, (now - t0) / D), r = (1 - Math.pow(1 - k, 3)) * maxR;
+    if (k < 1){
+      de.style.setProperty("background", "radial-gradient(circle at " + pt.x + "px " + pt.y + "px," + t + " " + Math.max(0, r - 40) + "px," + f + " " + r + "px)", "important");
+      waveRaf = requestAnimationFrame(step);
+    } else de.style.removeProperty("background");
+  };
+  waveRaf = requestAnimationFrame(step);
+}
+const pick = a => a[Math.random() * a.length | 0];
+function randomize(){
+  const before = configKey();
+  for (let tries = 0; tries < 12; tries++){
+    const eo = pick(EST_OPTS);
+    state.est = {opt: eo.n, color: eo.paint ? pick(eo.paint === "epoxy" ? EPOXY : LAQUEADA)[0] : null, finish: pick(["Mate", "Brillante"])};
+    if (eo.paint === "laqueada" && Math.random() < .4) state.esf = {same: true, fam: "Madera", opt: "Guatambú", color: null, finish: "Mate"};
+    else {
+      const fam = pick(["Madera", "Terrazzo", "Metal"]), o = pick(ESF_OPTS[fam]);
+      state.esf = {fam, opt: o.n, color: o.paint ? pick(o.paint === "epoxy" ? EPOXY : LAQUEADA)[0] : null, finish: pick(["Mate", "Brillante"])};
+    }
+    const af = pick(["Metal", "Madera", "Terrazzo", "Tapizado"]);
+    state.asi = af === "Metal" ? {fam: "Metal", opt: null, felpa: "Sunset", color: null}
+      : {fam: af, opt: pick(ASI_OPTS[af]).n, felpa: pick(FELPAS).n, color: pick(LAQUEADA)[0]};
+    normalize();
+    if (configKey() !== before) break;
+  }
+  pageJustOpened = false; update();
+}
+// Contraste WCAG entre dos colores [r,g,b]
+function relLum(c){ const f = v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }; return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2]); }
+function contrast(a, b){ const l1 = relLum(a), l2 = relLum(b); return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05); }
+// Oscurece un color (hacia casi negro) hasta alcanzar el contraste pedido contra el fondo.
+function ensureContrast(c, bg, ratio){
+  let k = 0, out = c.slice();
+  while (contrast(out, bg) < ratio && k < 1){ k += 0.04; out = c.map(v => Math.round(v * (1 - k) + 18 * k)); }
+  return "rgb(" + out.join(",") + ")";
+}
+// El color elegido tiñe el fondo de toda la página; los textos se ajustan para mantener buen contraste.
+function applyTitleColor(){
+  let hex = (!pageJustOpened && estOpt().paint) ? hexOf(allColors(), state.est.color) : null;
+  const art = hex === "art";
+  if (art) hex = null;
+
+  let wash = [255, 255, 255], base = [35, 34, 38];
+  if (hex){
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+    const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    if (lum <= 0.93){
+      wash = [r, g, b].map(v => Math.round(255 - (255 - v) * 0.32));
+      base = [r, g, b];
+    }
+  }
+  const root = document.documentElement.style;
+  if (!REDUCED && lastClick && Date.now() - lastClick.t < 1500 && wash.join() !== prevWash.join()) runWave(prevWash, wash, lastClick);
+  prevWash = wash;
+  root.setProperty("--wash", "rgb(" + wash.join(",") + ")");
+  root.setProperty("--title", ensureContrast(base, wash, 7));          // títulos: el color, oscurecido hasta leerse bien
+  root.setProperty("--ink", ensureContrast([35, 34, 38], wash, 12));   // texto principal
+  root.setProperty("--ink-soft", ensureContrast([74, 73, 77], wash, 8)); // texto secundario
+  root.setProperty("--ink-faint", ensureContrast([100, 99, 104], wash, 5.5)); // etiquetas chicas
+}
+
+/* ---------- presets ---------- */
+const FULL_COLORS = ["Rojo","Azul","Amarillo","Naranja","Verde","Magenta","Violeta","Celeste","Turquesa","Rosa Intenso","Verde Lima","Azul Oscuro","Salmón","Negro"];
+let fullIdx = 0;   // cada click en "Full color" pasa al siguiente color
+const PRESETS = [
+  {label:"Full color", desc:"Un color de punta a punta (cambia con cada click)", set:() => { state.est = {opt:"Pintura laqueada", color:FULL_COLORS[fullIdx++ % FULL_COLORS.length], finish:"Mate"}; state.esf = {same:true, fam:"Madera", opt:"Guatambú", color:null, finish:"Mate"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }},
+  {label:"Tenis", desc:"Epoxy terracota con esfera de roble", set:() => { state.est = {opt:"Epoxy", color:"Terracota", finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }},
+  {label:"Full crudo", desc:"Metal crudo de punta a punta", set:() => { state.est = {opt:"Crudo", color:null, finish:"Mate"}; state.esf = {fam:"Metal", opt:"Crudo", color:null, finish:"Mate"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }},
+  {label:"Full cromo", desc:"Todo cromado", set:() => { state.est = {opt:"Cromado", color:null, finish:"Mate"}; state.esf = {fam:"Metal", opt:"Cromado", color:null, finish:"Mate"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }},
+  {label:"Cromo y roble", desc:"Estructura cromada, esfera y asiento de roble", set:() => { state.est = {opt:"Cromado", color:null, finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Madera", opt:"Roble", felpa:"Sunset", color:null}; }},
+  {label:"Color y roble", desc:"Laqueada azul con esfera y asiento de roble", set:() => { state.est = {opt:"Pintura laqueada", color:"Azul", finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Madera", opt:"Roble", felpa:"Sunset", color:null}; }},
+  {label:"Cromo, Felpa y roble", desc:"Cromada, asiento Felpa Sunset y esfera de roble", set:() => { state.est = {opt:"Cromado", color:null, finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Felpa", felpa:"Sunset", color:null}; }},
+  {label:"Ello", ello:true, desc:"Todo crudo, sin esfera, asiento Felpa Sunset", set:() => { state.est = {opt:"Crudo", color:null, finish:"Mate"}; state.esf = {fam:"Metal", opt:"Crudo", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Felpa", felpa:"Sunset", color:null}; }},
+  {label:"Yo", desc:"Estructura naranja, esfera de roble, asiento Felpa Sunset", set:() => { state.est = {opt:"Pintura laqueada", color:"Naranja", finish:"Mate"}; state.esf = {fam:"Madera", opt:"Roble", color:null, finish:"Mate"}; state.asi = {fam:"Tapizado", opt:"Felpa", felpa:"Sunset", color:null}; }},
+  {label:"Superyo", superyo:true, desc:"Full dorada, metal brillante", set:() => { state.est = {opt:"Pintura laqueada", color:"Oro Azteca", finish:"Brillante"}; state.esf = {same:true, fam:"Madera", opt:"Guatambú", color:null, finish:"Brillante"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }},
+  {label:"Se me ocurre otra cosa", mix:true, set:() => { state.est = {opt:"Pintura laqueada", color:"Arte", finish:"Mate"}; state.esf = {same:true, fam:"Madera", opt:"Guatambú", color:null, finish:"Mate"}; state.asi = {fam:"Metal", opt:null, felpa:"Sunset", color:null}; }}
+];
+const presetByLabel = l => PRESETS.find(p => p.label === l);
+const specialOf = p => p.mix ? "mix" : p.ello ? "ello" : p.superyo ? "superyo" : "";
+function applyPreset(p){
+  p.set(); update();
+  mixKey = p.mix ? configKey() : ""; elloKey = p.ello ? configKey() : ""; superKey = p.superyo ? configKey() : "";
+  if (p.mix || p.ello || p.superyo) update();
+  const i = CAR.indexOf(p);
+  if (i >= 0){ carIdx = i; carKeys[i] = configKey(); syncCarousel(); }
+}
+
+/* ---------- visor: interfaz fija (render / focus / thumbnail) ----------
+   Hoy lo implementa el render 2D en capas. Un visor 3D futuro solo tiene que
+   cumplir esta misma interfaz; el panel, el precio, la URL y el WhatsApp no cambian. */
+// Encuadres por parte, en coordenadas del render de 1280 px: [centro x, centro y, escala]
+const FOCUS = {todo:[640,640,1], estructura:[573,640,1.12], esfera:[744,250,2], asiento:[668,640,1.8]};
+// Recortes cuadrados [x, y, lado] para las miniaturas de cada fila del panel
+const PART_CROP = {estructura:[190,70,1130], esfera:[634,96,220], asiento:[380,420,580]};
+// Detalles de uso (respaldo, brazo, soporte de zapatos): [x, y, ancho, alto]
+
+// Calcula las capas de una configuración sin tocar la que está en pantalla
+function snapshot(fn){
+  const bak = JSON.stringify(state);
+  try{ fn(); normalize(); return {s: JSON.parse(JSON.stringify(state)), specs: [estLayer(), esfLayer(), asiLayer()]}; }
+  finally{ const b = JSON.parse(bak); state.est = b.est; state.esf = b.esf; state.asi = b.asi; }
+}
+async function compose(snap, special, W){
+  const c = document.createElement("canvas"); c.width = c.height = W;
+  const x = c.getContext("2d");
+  if (special === "mix"){ x.drawImage(await loadImg("mix-1"), 0, 0, W, W); return c; }
+  x.drawImage(await loadImg("sombra"), 0, 0, W, W);
+  if (special === "ello" || special === "superyo"){ x.drawImage(await loadImg(special === "ello" ? "ello-render" : "superyo-render"), 0, 0, W, W); return c; }
+  const imgs = await Promise.all(snap.specs.map(s => layer(s[0], s[1])));
+  imgs.forEach(im => x.drawImage(im, 0, 0, W, W));
+  return c;
+}
+const Viewer = {
+  stage: document.getElementById("stage"),
+  render(){ return drawPreview(); },
+  focus(part){
+    const f = FOCUS[part] || FOCUS.todo, s = f[2];
+    const cl = v => Math.min(0, Math.max(100 - 100 * s, v));
+    const tx = cl(50 - s * f[0] / 12.8), ty = cl(50 - s * f[1] / 12.8);
+    this.stage.style.transform = s === 1 ? "" : "translate(" + tx + "%," + ty + "%) scale(" + s + ")";
+    document.querySelector(".preview").dataset.focus = part || "todo";
+  },
+  thumbnail(snap, special, W){ return compose(snap, special, W || 640); },
+  // Recorte de lo que está en pantalla (para las miniaturas del panel)
+  cropTo(canvas, r){
+    const x = canvas.getContext("2d"), pc = document.getElementById("previewCanvas"), sc = document.getElementById("sphereCanvas");
+    x.clearRect(0, 0, canvas.width, canvas.height);
+    x.drawImage(pc, r[0], r[1], r[2], r[2], 0, 0, canvas.width, canvas.height);
+    x.drawImage(sc, r[0], r[1], r[2], r[2], 0, 0, canvas.width, canvas.height);
+  }
+};
+function afterRender(){
+  document.querySelectorAll(".prow").forEach(b => Viewer.cropTo(b.querySelector(".pthumb"), PART_CROP[b.dataset.part]));
+}
+
+/* ---------- recomendaciones: carrusel + lista ---------- */
+const CAR = ["Ello", "Yo", "Superyo", "Full color", "Tenis", "Full crudo", "Full cromo", "Cromo y roble", "Color y roble", "Cromo, Felpa y roble"].map(presetByLabel);
+const SNAPS = CAR.map(p => snapshot(p.set));
+fullIdx = 0;   // armar las miniaturas no debe adelantar el ciclo de "Full color"
+const carKeys = SNAPS.map(sn => JSON.stringify([sn.s.est, sn.s.esf, sn.s.asi]));
+const carThumbs = [];
+let carIdx = 1;
+// Precio de cada recomendación (se calcula al inicio, antes de que haya claves de preset activas)
+function priceOf(i){
+  if (CAR[i].ello) return Math.round(BASE * (1 + IVA));
+  const s = SNAPS[i].s, bak = JSON.stringify(state);
+  try{ state.est = s.est; state.esf = s.esf; state.asi = s.asi; return Math.round((BASE + priceBreakdown().adic) * (1 + IVA)); }
+  finally{ const b = JSON.parse(bak); state.est = b.est; state.esf = b.esf; state.asi = b.asi; }
+}
+const recList = document.getElementById("recList");
+CAR.forEach((p, i) => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "rec-card";
+  b.innerHTML = '<img alt=""><span class="rec-txt"><span class="rec-name"></span><span class="rec-desc"></span></span><span class="rec-price"></span>';
+  b.querySelector(".rec-name").textContent = disp(p.label);
+  b.querySelector(".rec-desc").textContent = disp(p.desc || "");
+  b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; applyPreset(p); });
+  recList.appendChild(b);
+});
+const presetRow = document.getElementById("presetRow");
+{
+  const b = document.createElement("button"); b.type = "button"; b.className = "preset-btn surprise"; b.textContent = "✦ Sorprendeme";
+  b.addEventListener("click", randomize);
+  presetRow.appendChild(b);
+}
+PRESETS.filter(p => p.mix).forEach(p => {
+  const b = document.createElement("button"); b.type = "button"; b.className = "preset-btn mixcta"; b.textContent = disp(p.label);
+  b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; applyPreset(p); setTab("cfg"); });
+  presetRow.appendChild(b);
+});
+// Precios con mixKey/elloKey/superKey limpios: se calculan antes del primer render
+const carPrices = CAR.map((p, i) => priceOf(i));
+recList.querySelectorAll(".rec-price").forEach((el, i) => el.textContent = fmt(carPrices[i]));
+
+function syncCarousel(){
+  const n = CAR.length, prev = (carIdx - 1 + n) % n, next = (carIdx + 1) % n;
+  const onPreset = configKey() === carKeys[carIdx];
+  document.getElementById("carName").textContent = onPreset ? disp(CAR[carIdx].label) : "Tu Eco";
+  document.getElementById("carCount").textContent = onPreset ? (carIdx + 1) + " / " + n : "a partir de " + disp(CAR[carIdx].label);
+  const pi = document.querySelector("#carPrev img"), ni = document.querySelector("#carNext img");
+  if (carThumbs[prev]) pi.src = carThumbs[prev];
+  if (carThumbs[next]) ni.src = carThumbs[next];
+  recList.querySelectorAll(".rec-card").forEach((c, i) => c.classList.toggle("active", onPreset && i === carIdx));
+  // en el carril horizontal (mobile) la tarjeta activa queda a la vista, sin mover la página
+  const act = recList.querySelector(".rec-card.active");
+  if (act && recList.scrollWidth > recList.clientWidth){
+    const x = act.getBoundingClientRect().left - recList.getBoundingClientRect().left + recList.scrollLeft - 20;
+    if (x < recList.scrollLeft || x + act.offsetWidth + 40 > recList.scrollLeft + recList.clientWidth) recList.scrollTo({left: x, behavior: REDUCED ? "auto" : "smooth"});
+  }
+}
+const carGo = d => { pageJustOpened = false; applyPreset(CAR[(carIdx + d + CAR.length) % CAR.length]); };
+document.getElementById("carPrev").addEventListener("click", () => carGo(-1));
+document.getElementById("carNext").addEventListener("click", () => carGo(1));
+document.getElementById("carPrevBtn").addEventListener("click", () => carGo(-1));
+document.getElementById("carNextBtn").addEventListener("click", () => carGo(1));
+document.getElementById("carEdit").addEventListener("click", () => { setTab("cfg"); });
+
+/* ---------- panel: pestañas, filas y subpantallas ---------- */
+const PART_TITLE = {estructura:"Estructura", esfera:"Esfera", asiento:"Asiento"};
+const pslide = document.getElementById("pslide");
+function setTab(t){
+  document.querySelectorAll(".ptabs button").forEach(b => b.classList.toggle("active", b.dataset.tab === t));
+  document.getElementById("view-rec").hidden = t !== "rec";
+  document.getElementById("view-cfg").hidden = t !== "cfg";
+  document.querySelector(".preview").classList.toggle("mode-rec", t === "rec");
+  if (t === "rec") closeSub();
+}
+function openSub(part){
+  document.querySelectorAll(".psub-body").forEach(b => b.hidden = b.dataset.part !== part);
+  document.getElementById("psubTitle").textContent = PART_TITLE[part];
+  pslide.classList.add("sub");
+  Viewer.focus(part);
+}
+function closeSub(){ pslide.classList.remove("sub"); Viewer.focus("todo"); }
+document.querySelectorAll(".ptabs button").forEach(b => b.addEventListener("click", () => setTab(b.dataset.tab)));
+document.querySelectorAll(".prow").forEach(b => b.addEventListener("click", () => openSub(b.dataset.part)));
+document.getElementById("psubBack").addEventListener("click", closeSub);
+{
+  const nEsf = Object.values(ESF_OPTS).reduce((a, l) => a + l.length, 0);
+  const nAsi = Object.values(ASI_OPTS).reduce((a, l) => a + l.length, 0) + 1;
+  document.getElementById("count-estructura").textContent = EST_OPTS.length + " acabados · " + (LAQUEADA.length + ESPECIALES.length) + " colores";
+  document.getElementById("count-esfera").textContent = nEsf + " opciones";
+  document.getElementById("count-asiento").textContent = nAsi + " opciones";
+}
+
+/* ---------- configuración en la URL (links compartibles) ---------- */
+function encodeHash(){
+  const k = isMix() ? "mix" : isEllo() ? "ello" : isSuper() ? "superyo" : "";
+  const o = {e: state.est, f: state.esf, a: state.asi}; if (k) o.k = k;
+  return "#c=" + btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+function decodeHash(h){
+  const m = (h || "").match(/^#c=([\w-]+)$/); if (!m) return null;
+  try{
+    let b = m[1].replace(/-/g, "+").replace(/_/g, "/"); while (b.length % 4) b += "=";
+    if (b.length > 2000) return null;
+    const o = JSON.parse(decodeURIComponent(escape(atob(b))));
+    return cleanShared(o);
+  }catch(e){ return null; }
+}
+// Un link compartido lo puede escribir cualquiera: se reconstruye el estado solo con valores que existen en el configurador.
+// Si algo no coincide, el link se ignora y la página arranca normal.
+function cleanShared(o){
+  if (!o || typeof o !== "object") return null;
+  const str = v => typeof v === "string" ? v : null;
+  const inList = (v, list) => list.includes(v) ? v : null;
+  const paintColors = p => p === "epoxy" ? EPOXY.map(c => c[0]) : LAQUEADA.concat(ESPECIALES).map(c => c[0]).concat(["Arte"]);
+  const FINISHES = ["Mate", "Brillante", "Satinado"];
+  const e = o.e || {}, f = o.f || {}, a = o.a || {};
+  const eo = EST_OPTS.find(x => x.n === str(e.opt)); if (!eo) return null;
+  const est = {opt: eo.n, color: null, finish: inList(e.finish, FINISHES) || "Mate"};
+  if (eo.paint){ est.color = inList(e.color, paintColors(eo.paint)); if (!est.color) return null; }
+  const esf = {fam: "Madera", opt: "Guatambú", color: null, finish: inList(f.finish, FINISHES) || "Mate"};
+  if (f.same === true){ esf.same = true; }
+  else {
+    if (!Object.prototype.hasOwnProperty.call(ESF_OPTS, f.fam)) return null;
+    const fo = ESF_OPTS[f.fam].find(x => x.n === str(f.opt)); if (!fo) return null;
+    esf.fam = f.fam; esf.opt = fo.n;
+    if (fo.paint){ esf.color = inList(f.color, paintColors(fo.paint)); if (!esf.color) return null; }
+  }
+  const asi = {fam: "Metal", opt: null, felpa: inList(a.felpa, FELPAS.map(x => x.n)) || "Sunset", color: null};
+  if (a.fam !== "Metal"){
+    if (!Object.prototype.hasOwnProperty.call(ASI_OPTS, a.fam)) return null;
+    const ao = ASI_OPTS[a.fam].find(x => x.n === str(a.opt)); if (!ao) return null;
+    asi.fam = a.fam; asi.opt = ao.n;
+    if (ao.sub === "color"){ asi.color = inList(a.color, LAQUEADA.concat(ESPECIALES).map(c => c[0])); if (!asi.color) return null; }
+  }
+  const k = inList(o.k, ["mix", "ello", "superyo"]);
+  return k ? {e: est, f: esf, a: asi, k} : {e: est, f: esf, a: asi};
+}
+let hashReady = false;
+function syncHash(){ if (hashReady && location.hash !== encodeHash()) history.replaceState(null, "", encodeHash()); }
+
+/* ---------- secciones de la página que usan los renders ---------- */
+async function paintPage(){
+  for (let i = 0; i < CAR.length; i++){
+    try{
+      const c = await Viewer.thumbnail(SNAPS[i], specialOf(CAR[i]), 480);
+      carThumbs[i] = c.toDataURL("image/png");
+      recList.querySelectorAll(".rec-card img")[i].src = carThumbs[i];
+    }catch(e){ console.error(e); }
+  }
+  syncCarousel();
+}
+document.querySelectorAll(".psy").forEach(a => a.querySelector("button").addEventListener("click", () => {
+  pageJustOpened = false; applyPreset(presetByLabel(a.dataset.preset)); setTab("rec");
+  document.getElementById("configurar").scrollIntoView({behavior: REDUCED ? "auto" : "smooth"});
+}));
+
+/* ---------- confirmación / WhatsApp ---------- */
+function openConfirm(){
+  document.getElementById("modalLines").innerHTML =
+    '<div class="row"><span>Edición</span><strong>Limitada a 20 unidades (el número se asigna al confirmar)</strong></div>' +
+    '<div class="row"><span>Estructura</span><strong>' + inf(describeEst()) + '</strong></div>' +
+    '<div class="row"><span>Esfera</span><strong>' + inf(describeEsf()) + '</strong></div>' +
+    '<div class="row"><span>Asiento</span><strong>' + inf(describeAsi()) + '</strong></div>';
+  document.getElementById("modalTotal").textContent = document.getElementById("totalValue").dataset.val;
+  const ack = document.getElementById("ackBox"); ack.checked = false;
+  const cb = document.getElementById("modalConfirm"); cb.disabled = true; cb.style.opacity = ".4"; cb.style.cursor = "not-allowed";
+  document.getElementById("modalOverlay").classList.add("open");
+}
+function closeConfirm(){ document.getElementById("modalOverlay").classList.remove("open"); }
+document.getElementById("ackBox").addEventListener("change", e => {
+  const cb = document.getElementById("modalConfirm"); cb.disabled = !e.target.checked;
+  cb.style.opacity = e.target.checked ? "1" : ".4"; cb.style.cursor = e.target.checked ? "pointer" : "not-allowed";
+});
+function confirmSend(){
+  if (!document.getElementById("ackBox").checked) return;
+  const mix = mixKey && configKey() === mixKey;
+  const msg = (mix ? "Buenos días! Se me ocurre otra cosa. Armé este mix de ECO como punto de partida.\nEstructura: " : "Buenos días! Armé esta configuración de ECO.\nEstructura: ") + describeEst() +
+    "\nEsfera: " + describeEsf() + "\nAsiento: " + describeAsi() +
+    "\nTotal estimado: " + document.getElementById("totalValue").dataset.val +
+    "\nVer mi Eco: " + location.origin + location.pathname + encodeHash() +
+    (mix ? "\nSigamos la conversación por acá para hacer un pedido aún más especial." : "\nCómo seguimos?");
+  window.open("https://wa.me/5493518756998?text=" + encodeURIComponent(msg), "_blank", "noopener,noreferrer");
+  closeConfirm();
+}
+document.getElementById("ctaBtn").addEventListener("click", openConfirm);
+document.getElementById("modalCancel").addEventListener("click", closeConfirm);
+document.getElementById("modalConfirm").addEventListener("click", confirmSend);
+document.getElementById("modalOverlay").addEventListener("click", e => { if (e.target.id === "modalOverlay") closeConfirm(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeConfirm(); });
+
+/* ---------- arranque: link compartido o recomendación "Yo" ---------- */
+{
+  const shared = decodeHash(location.hash);
+  if (shared){
+    state.est = shared.e; state.esf = shared.f; state.asi = shared.a;
+    pageJustOpened = false;
+    update();
+    if (shared.k){
+      const k = configKey();
+      if (shared.k === "mix") mixKey = k; else if (shared.k === "ello") elloKey = k; else if (shared.k === "superyo") superKey = k;
+      const i = CAR.findIndex(p => specialOf(p) === shared.k); if (i >= 0){ carIdx = i; carKeys[i] = k; }
+    }
+    hashReady = true; update(); setTab("cfg");
+  } else {
+    applyPreset(presetByLabel("Yo"));
+    setTab("rec");
+    // La URL limpia se mantiene hasta que la persona toca algo; desde ahí lleva la configuración
+    window.addEventListener("click", () => { hashReady = true; }, {once: true, capture: true});
+  }
+  paintPage();
+}
+
+/* ---------- mini silla flotante (mobile): aparece cuando el render grande sale de pantalla y muestra los cambios en vivo ---------- */
+(function(){
+  const mini = document.getElementById("miniChair"); if (!mini || !("IntersectionObserver" in window)) return;
+  const mc = mini.querySelector("canvas"), mx = mc.getContext("2d");
+  const wrap = document.querySelector(".preview-imgwrap"), pc = document.getElementById("previewCanvas"), sc = document.getElementById("sphereCanvas");
+  const isSmall = () => window.matchMedia("(max-width:860px)").matches;
+  let vis = false, raf = 0;
+  const loop = () => {
+    if (!vis){ raf = 0; return; }
+    mx.clearRect(0, 0, mc.width, mc.height);
+    mx.drawImage(pc, 110, 40, 1010, 1230, 0, 0, mc.width, mc.height);
+    mx.drawImage(sc, 110, 40, 1010, 1230, 0, 0, mc.width, mc.height);
+    raf = requestAnimationFrame(loop);
+  };
+  // Solo mientras se recorren las opciones del panel y el render grande quedó fuera de pantalla
+  let wrapIn = true, panelIn = false;
+  const apply = () => { vis = !wrapIn && panelIn && isSmall(); mini.classList.toggle("show", vis); if (vis && !raf) raf = requestAnimationFrame(loop); };
+  // La chica aparece apenas la grande queda menos de la mitad a la vista (descontando la barra de arriba),
+  // así nunca hay un tramo sin ninguna de las dos.
+  new IntersectionObserver(es => { wrapIn = es[0].intersectionRatio > 0.5; apply(); }, {threshold: [0, .25, .5, .75, 1], rootMargin: "-" + NAV_H + "px 0px 0px 0px"}).observe(wrap);
+  new IntersectionObserver(es => { panelIn = es[0].isIntersecting; apply(); }, {threshold: 0}).observe(document.querySelector(".panel"));
+})();
+
+/* ---------- barra fija de precio (mobile): visible en el configurador hasta que aparece el resumen ---------- */
+(function(){
+  const bar = document.getElementById("mbar"); if (!bar) return;
+  document.getElementById("mbarCta").addEventListener("click", () => document.getElementById("ctaBtn").click());
+  // Visible mientras se recorren las opciones: la silla grande ya salió (así no tapa las flechas ni "Editar")
+  // y el total del resumen todavía no llegó a la pantalla.
+  const wrap = document.querySelector(".preview-imgwrap"), panel = document.querySelector(".panel"), sum = document.querySelector(".summary-total");
+  let on = false, queued = false;
+  const check = () => {
+    queued = false;
+    const H = innerHeight, w = wrap.getBoundingClientRect(), p = panel.getBoundingClientRect(), s = sum.getBoundingClientRect();
+    const wrapVis = w.height ? (Math.min(w.bottom, H) - Math.max(w.top, NAV_H)) / w.height : 0;
+    const next = matchMedia("(max-width:860px)").matches && p.top < H && p.bottom > 0 && wrapVis < 0.5 && s.top > H;
+    if (next === on) return;
+    on = next; bar.classList.toggle("show", on); bar.setAttribute("aria-hidden", on ? "false" : "true"); document.getElementById("mbarCta").tabIndex = on ? 0 : -1;
+  };
+  const queue = () => { if (!queued){ queued = true; requestAnimationFrame(check); } };
+  addEventListener("scroll", queue, {passive: true}); addEventListener("resize", queue);
+  document.addEventListener("click", () => setTimeout(queue, 400));   // cambiar de pestaña o subpantalla cambia las alturas
+  queue();
+})();
+</script>
