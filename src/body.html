@@ -15,6 +15,26 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
     a.textContent = "Abrir el configurador de la Silla Eco"; document.body.appendChild(a);
   });
 })();
+/* Píxel de Meta: el mismo de la tienda (milnuevestudio.com). El ID es público por diseño, no es un secreto. */
+(function(){
+  if (document.documentElement.classList.contains("blocked")) { window.ecoTrack = function(){}; return; }
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq("init", "607496468693076");
+  // Dentro de la tienda, la tienda ya manda el PageView de /configurador-eco/: acá no se repite.
+  if (!document.documentElement.classList.contains("embed")) fbq("track", "PageView");
+  fbq("track", "ViewContent", {content_name: "Silla Eco", content_type: "product", content_ids: ["silla-eco"]});
+  window.ecoTrack = function(ev, data){ try { fbq("track", ev, data || {}); } catch (e) {} };
+})();
+/* Origen de la visita (utm_content del anuncio), para el "Ref:" del WhatsApp. Solo letras, números y - _ . */
+window.ecoRef = (function(){
+  var v = ""; try { v = new URLSearchParams(location.search).get("utm_content") || ""; } catch (e) {}
+  v = v.replace(/[^\w.\- ]/g, "").trim().slice(0, 60);
+  return v || "directo";
+})();
 </script>
 
 <nav class="sitenav" aria-label="Secciones">
@@ -659,9 +679,16 @@ function swatchCell(bg, label, selected, onclick, opts){
   if (opts.thumb){ b.style.backgroundImage = "url(" + opts.thumb + ")"; b.style.backgroundSize = "cover"; b.style.backgroundPosition = "center"; }
   else b.style.background = bg;
   b.title = disp(label);
-  b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; onclick(); update(); });
+  b.addEventListener("click", e => { if (e.isTrusted){ pageJustOpened = false; trackCustomize(); } onclick(); update(); });
   const l = document.createElement("span"); l.className = "swatch-label"; l.textContent = disp(label);
   cell.appendChild(b); cell.appendChild(l); return cell;
+}
+// Meta: CustomizeProduct la primera vez que la persona cambia un material (una vez por sesión)
+function trackCustomize(){
+  try { if (sessionStorage.getItem("ecoCustomized")) return; sessionStorage.setItem("ecoCustomized", "1"); }
+  catch (e) { if (trackCustomize.done) return; }
+  trackCustomize.done = true;
+  window.ecoTrack("CustomizeProduct", {content_name: "Silla Eco", content_ids: ["silla-eco"], content_type: "product"});
 }
 function row(){ const r = document.createElement("div"); r.className = "swatches"; return r; }
 function label(txt){ const d = document.createElement("div"); d.className = "group-label"; d.textContent = txt; return d; }
@@ -672,7 +699,7 @@ function toggle(items, active, onpick, disabled){
     const b = document.createElement("button"); b.type = "button"; b.textContent = n;
     if (n === active) b.classList.add("active");
     if (disabled && disabled.includes(n)){ b.disabled = true; b.style.opacity = ".35"; b.style.cursor = "not-allowed"; }
-    b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; if (n !== active){ onpick(n); update(); } });
+    b.addEventListener("click", e => { if (e.isTrusted) pageJustOpened = false; if (n !== active){ if (e.isTrusted) trackCustomize(); onpick(n); update(); } });
     t.appendChild(b);
   });
   return t;
@@ -775,6 +802,7 @@ function buildAsiento(){
   }
 }
 
+let currentPrice = 0;  // total con IVA, en pesos (para el evento Contact de Meta)
 function update(){
   normalize();
   buildEstructura(); buildEsfera(); buildAsiento();
@@ -785,6 +813,7 @@ function update(){
   const sub = BASE + pb.adic, iva = Math.round(sub * IVA);
   const totP = Math.round(sub * (1 + IVA)), adicP = Math.round(pb.adic * (1 + IVA));
   document.getElementById("baseLine").textContent = fmt(totP - adicP);
+  currentPrice = sub + iva;
   const mix = !!mixKey && configKey() === mixKey;  // "Se me ocurre otra cosa": precio infinito
   document.getElementById("ivaValue").innerHTML = mix ? inf("∞") : fmt(iva);
   setOdo(document.getElementById("totalValue"), mix ? "∞" : fmt(sub + iva));
@@ -1145,7 +1174,9 @@ function confirmSend(){
     "\nEsfera: " + describeEsf() + "\nAsiento: " + describeAsi() +
     "\nTotal estimado: " + document.getElementById("totalValue").dataset.val +
     "\nVer mi Eco: " + location.origin + location.pathname + encodeHash() +
-    (mix ? "\nSigamos la conversación por acá para hacer un pedido aún más especial." : "\nCómo seguimos?");
+    (mix ? "\nSigamos la conversación por acá para hacer un pedido aún más especial." : "\nCómo seguimos?") +
+    "\n\nRef: " + window.ecoRef;
+  window.ecoTrack("Contact", {value: currentPrice, currency: "ARS", content_name: "Silla Eco"});
   window.open("https://wa.me/5493518756998?text=" + encodeURIComponent(msg), "_blank", "noopener,noreferrer");
   closeConfirm();
 }
