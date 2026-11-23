@@ -18,11 +18,17 @@ if (new URLSearchParams(location.search).has("embed")) document.documentElement.
 /* Píxel de Meta: el mismo de la tienda (milnuevestudio.com). El ID es público por diseño, no es un secreto. */
 (function(){
   if (document.documentElement.classList.contains("blocked")) { window.ecoTrack = function(){}; return; }
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  // Cola de eventos de Meta (código estándar). El script de Meta (~200 KB) se descarga recién cuando la página
+  // terminó de cargar, para no competir con las fotos; los eventos esperan en la cola y salen igual.
+  var n = window.fbq = function(){ n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+  if (!window._fbq) window._fbq = n;
+  n.push = n; n.loaded = true; n.version = "2.0"; n.queue = [];
+  function loadMeta(){
+    var t = document.createElement("script"); t.async = true; t.src = "https://connect.facebook.net/en_US/fbevents.js";
+    document.head.appendChild(t);
+  }
+  if (document.readyState === "complete") setTimeout(loadMeta, 300);
+  else window.addEventListener("load", function(){ setTimeout(loadMeta, 300); }, {once: true});
   fbq("init", "607496468693076");
   // Dentro de la tienda, la tienda ya manda el PageView de /configurador-eco/: acá no se repite.
   if (!document.documentElement.classList.contains("embed")) fbq("track", "PageView");
@@ -225,7 +231,7 @@ window.ecoRef = (function(){
             <li><strong>Cambios de estética.</strong> El titular puede pedir cambios sin límite: repintado o cambio de acabado de la estructura, cambio de esfera y cambio o retapizado del asiento, entre las opciones que mil9 ofrezca en ese momento y según la factibilidad técnica de cada pieza.</li>
             <li><strong>Presupuesto previo.</strong> Cada trabajo se evalúa y se presupuesta por escrito: materiales a precio de lista vigente al momento del pedido, más envíos si corresponden. El trabajo empieza cuando el titular acepta el presupuesto y abona los materiales.</li>
             <li><strong>Dónde y cuándo.</strong> Los trabajos se hacen en el taller de mil9 en Córdoba, con turno coordinado por WhatsApp. Los plazos son estimados y dependen del trabajo y de la disponibilidad de materiales. El titular puede llevar y retirar la silla en el taller.</li>
-            <li><strong>Titularidad.</strong> La garantía acompaña a la silla y a su número (n.º / 20). Si la silla cambia de dueño, quien la reciba conserva la garantía avisándonos por WhatsApp con el número de la silla.</li>
+            <li><strong>Titularidad.</strong> La garantía es personal e intransferible: corresponde solo a quien compró la silla a MilDesing SAS, identificada por su número (n.º / 20). Si la silla se vende, se regala o cambia de dueño, la garantía de por vida no pasa al nuevo dueño.</li>
             <li><strong>Exclusiones.</strong> La mano de obra sin cargo no aplica a sillas modificadas o reparadas por terceros, ni a piezas que no sean originales de mil9. Las variaciones naturales de la madera, el terrazzo y los tapizados no son defectos.</li>
             <li><strong>Materiales disponibles.</strong> Si un material, color o acabado deja de estar disponible, ofrecemos una alternativa equivalente.</li>
             <li><strong>Cómo pedirla.</strong> Escribinos por WhatsApp con el número de tu silla y fotos. La evaluamos y te respondemos por escrito con la propuesta y el presupuesto de materiales.</li>
@@ -257,7 +263,7 @@ window.ecoRef = (function(){
     <li><strong>Mano de obra de por vida</strong><span>para reparar tu Eco o cambiarle la estética, sin cargo por el trabajo.</span></li>
     <li><strong>Cambios sin límite</strong><span>de estética, todas las veces que quieras, entre las opciones disponibles.</span></li>
     <li><strong>Materiales y envíos aparte</strong><span>los materiales se cobran a precio vigente; los envíos y traslados no están incluidos.</span></li>
-    <li><strong>Va con la silla</strong><span>si la regalás o la vendés, la garantía sigue con su número (n.º / 20).</span></li>
+    <li><strong>Para quien la compró</strong><span>la garantía es personal: la tiene quien hizo la compra, con el número de su silla (n.º / 20).</span></li>
   </ul>
   <a class="pill-btn" href="#bases-garantia">Ver bases y condiciones</a>
 </section>
@@ -297,7 +303,7 @@ window.ecoRef = (function(){
     <div class="modal-lines" id="modalLines"></div>
     <label style="display:flex; gap:10px; align-items:flex-start; font-size:12px; line-height:1.5; color:var(--ink-soft); margin-bottom:20px; cursor:pointer;">
       <input type="checkbox" id="ackBox" style="margin-top:3px; flex-shrink:0;">
-      <span>Entiendo que, al ser un producto único y personalizado, es un experimento y puede variar respecto de las imágenes. Y estamos felices de que así sea.</span>
+      <span>Entiendo que, al ser un producto único y personalizado, es un experimento y puede variar respecto de las imágenes. Estamos felices de que así sea.</span>
     </label>
     <div class="modal-total"><span>Total estimado</span><strong id="modalTotal"></strong></div>
     <div class="modal-actions">
@@ -357,7 +363,7 @@ if (location.hash === "#bases-garantia"){ const d = document.getElementById("bas
 // Renders de terrazzo: se usan con el nombre de archivo original
 const IMG_ALIAS = {};
 const FILE = n => IMG_ALIAS[n] ? encodeURIComponent(IMG_ALIAS[n]) : n;
-const IMG = n => IMGDATA ? IMGDATA[n] : "img/" + FILE(n) + (n.startsWith("thumb-") ? ".jpg" : ".png");
+const IMG = n => IMGDATA ? IMGDATA[n] : "img/" + FILE(n) + (n.startsWith("thumb-") ? ".jpg" : ".webp");
 
 let mixKey = "", elloKey = "", superKey = "";
 const isSuper = () => !!superKey && configKey() === superKey;   // "Superyo": render dorado propio
@@ -1205,7 +1211,16 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeConfirm
     // La URL limpia se mantiene hasta que la persona toca algo; desde ahí lleva la configuración
     window.addEventListener("click", () => { hashReady = true; }, {once: true, capture: true});
   }
-  paintPage();
+  // Las miniaturas de las recomendaciones cargan muchas capas: se arman cuando el configurador se acerca a la pantalla
+  // (o un rato después de que cargó la página), para que la foto principal y la historia carguen primero.
+  let painted = false;
+  const paintOnce = () => { if (!painted){ painted = true; paintPage(); } };
+  const cfgEl = document.getElementById("configurar");
+  if ("IntersectionObserver" in window && cfgEl){
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)){ io.disconnect(); paintOnce(); } }, {rootMargin: "1200px 0px"});
+    io.observe(cfgEl);
+    window.addEventListener("load", () => setTimeout(paintOnce, 4000), {once: true});
+  } else paintOnce();
 }
 
 /* ---------- mini silla flotante (mobile): aparece cuando el render grande sale de pantalla y muestra los cambios en vivo ---------- */

@@ -50,9 +50,9 @@ with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8", newline="\n")
 
 # Prueba local: imágenes embebidas.
 data = {}
-for path in glob.glob(os.path.join(ROOT, "*.png")) + glob.glob(os.path.join(ROOT, "*.jpg")):
+for path in glob.glob(os.path.join(ROOT, "*.webp")) + glob.glob(os.path.join(ROOT, "thumb-*.jpg")):
     name = os.path.splitext(os.path.basename(path))[0]
-    mime = "image/jpeg" if path.endswith(".jpg") else "image/png"
+    mime = "image/jpeg" if path.endswith(".jpg") else "image/webp"
     with open(path, "rb") as f:
         data[name] = "data:%s;base64,%s" % (mime, base64.b64encode(f.read()).decode())
 with open(os.path.join(SRC, "prueba.html"), "w", encoding="utf-8", newline="\n") as f:
